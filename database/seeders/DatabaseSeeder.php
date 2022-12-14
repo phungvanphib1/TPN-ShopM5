@@ -24,7 +24,14 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
         ]);
         $this->call([
+            ProductSeeder::class,
+        ]);
+        $this->call([
             CustomerSeeder::class,
         ]);
+        $this->call([
+            OderSeeder::class,
+        ]);
+
     }
 }
