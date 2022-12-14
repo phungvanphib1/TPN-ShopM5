@@ -16,11 +16,19 @@ class GroupsSeeder extends Seeder
     {
         DB::table('groups')->insert([
             [
-                'name' => 'Category',
+                'name' => 'Supper Admin',
 
             ],
             [
-                'name' => 'Product',
+                'name' => 'Quản Lý',
+
+            ],
+            [
+                'name' => 'Giám Đốc',
+
+            ],
+            [
+                'name' => 'Nhân Viên',
 
             ],
 
