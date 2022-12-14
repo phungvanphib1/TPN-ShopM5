@@ -5,7 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-class GroupsSeeder extends Seeder
+
+class RolesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,17 +15,19 @@ class GroupsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('groups')->insert([
+
+        DB::table('roles')->insert([
             [
-                'name' => 'Category',
+                'name' => 'Category_viewAny',
+                'group_name' => 'Category',
 
             ],
             [
-                'name' => 'Product',
+                'name' => 'Product_viewAny',
+                'group_name' => 'Product',
 
             ],
 
         ]);
     }
 }
-
