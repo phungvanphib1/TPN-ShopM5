@@ -23,3 +23,5 @@ class ImageProductSeeder extends Seeder
         ]);
     }
 }
+
+
