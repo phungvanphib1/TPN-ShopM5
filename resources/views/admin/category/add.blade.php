@@ -6,7 +6,11 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">General Form Elements</h5>
+                        <br>
+                        <h2 class="offset-4">
+                            Thêm Loại Sản Phẩm
+                        </h2>
+                        <br>
 
                         <!-- General Form Elements -->
                         <form action="{{ route('category.store') }}" method="post">
@@ -15,7 +19,10 @@
                                 <label for="inputText" class="col-sm-2 col-form-label">Tên Loại Sản Phẩm</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="name" placeholder="Nhập Tên Loại Sản Phẩm"
-                                        class="form-control">
+                                        class="form-control" value="{{ old('name') }}">
+                                    @error('name')
+                                        <div class="text text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <br>
