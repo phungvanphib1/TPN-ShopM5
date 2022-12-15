@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('admin.dashboar');
+})->name('dashboard.admin');
+
+Route::group(['prefix' => 'categories'], function () {
+    Route::get('/', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
+    Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::put('/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+    Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+    Route::get('/trash', [CategoryController::class, 'trash'])->name('category.trash');
+    Route::put('/restore/{id}', [CategoryController::class, 'restore'])->name('category.restore');
+    Route::delete('/forcedelete/{id}', [CategoryController::class, 'forcedelete'])->name('category.forcedelete');
 });
