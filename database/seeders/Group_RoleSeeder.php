@@ -15,7 +15,7 @@ class Group_RoleSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1; $i <= 36; $i++) {
+        for ($i = 1; $i <= 49; $i++) {
             DB::table('group_role')->insert([
                 'group_id' => 1,
                 'role_id' => $i,
