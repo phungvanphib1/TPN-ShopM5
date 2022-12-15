@@ -41,12 +41,12 @@
 
   <!-- ======= Header ======= -->
 
-@include('includes.header')
+@include('admin.includes.header')
 
   <!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
-@include('includes.sidebar')
+@include('admin.includes.sidebar')
 
   <!-- End Sidebar-->
 
@@ -56,7 +56,7 @@
 
 
   <!-- ======= Footer ======= -->
-  @include('includes.footer')
+  @include('admin.includes.footer')
   <!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -71,7 +71,7 @@
   <script src="{{asset('assets/vendor/tinymce/tinymce.min.js')}}"></script>
   <script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
 
-  <!-- Template Main JS File -->    
+  <!-- Template Main JS File -->
   <script src="{{asset('assets/js/main.js')}}"></script>
 
 </body>
