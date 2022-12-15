@@ -59,7 +59,9 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
+  <section id="main-footer">
   @include('admin.includes.footer')
+  </section>
   <!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -77,6 +79,46 @@
   <!-- Template Main JS File -->
   <script src="{{asset('admin/assets/js/main.js')}}"></script>
 
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js'></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.10.25/datatables.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+        @php
+       if(Session::has('message')){
+       @endphp
+        Swal.fire({
+            position: 'top-end',
+            // icon: 'success',
+            icon: "{{ Session::get('alert-type') }}",
+            title: "{{ Session::get('message') }}",
+            showConfirmButton: false,
+            timer: 1500
+        })
+        @php
+       }
+        @endphp
+    //    @php
+    //    if(Session::has('message')){
+    //    @endphp
+    //         const Toast = Swal.mixin({
+    //         toast: true,
+    //         position: 'top-end',
+    //         showConfirmButton: false,
+    //         timer: 3000,
+    //         timerProgressBar: true,
+    //         didOpen: (toast) => {
+    //             toast.addEventListener('mouseenter', Swal.stopTimer)
+    //             toast.addEventListener('mouseleave', Swal.resumeTimer)
+    //             }
+    //         })
+    //         Toast.fire({
+    //         icon: 'success',
+    //         title: 'Signed in successfully'
+    //         })
+    //     @php
+    //  }
+    //     @endphp
+	</script>
 </body>
-
 </html>
