@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             Oder_detailSeeder::class,
             RoleSeeder::class,
             Group_RoleSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }
