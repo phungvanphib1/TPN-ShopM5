@@ -28,7 +28,8 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             ImageProductSeeder::class,
             OderSeeder::class,
-            Oder_detailSeeder::class,       
+            Oder_detailSeeder::class,
+            RoleSeeder::class,
         ]);
     }
 }
