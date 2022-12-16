@@ -64,7 +64,6 @@ class CategoryController extends Controller
             return redirect()->route('category.index')->with($notification);
         }
     }
-
     /**
      * Display the specified resource.
      *

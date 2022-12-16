@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\GroupController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +30,16 @@ Route::group(['prefix' => 'categories'], function () {
     Route::put('/restore/{id}', [CategoryController::class, 'restore'])->name('category.restore');
     Route::delete('/forcedelete/{id}', [CategoryController::class, 'forcedelete'])->name('category.forcedelete');
 });
+// group
+Route::group(['prefix' => 'groups'], function () {
+    Route::get('/', [GroupController::class, 'index'])->name('group.index');
+    Route::get('/create', [GroupController::class, 'create'])->name('group.create');
+    Route::post('/store', [GroupController::class, 'store'])->name('group.store');
+    Route::get('/edit/{id}', [GroupController::class, 'edit'])->name('group.edit');
+    Route::put('/update/{id}', [GroupController::class, 'update'])->name('group.update');
+    Route::delete('/destroy/{id}', [GroupController::class, 'destroy'])->name('group.destroy');
+    Route::get('/trash', [GroupController::class, 'trash'])->name('group.trash');
+    Route::put('/restore/{id}', [GroupController::class, 'restore'])->name('group.restore');
+    Route::delete('/forcedelete/{id}', [GroupController::class, 'forcedelete'])->name('group.forcedelete');
+});
+
