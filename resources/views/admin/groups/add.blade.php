@@ -6,9 +6,11 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Thêm Mới Nhóm Quyền</h5>
-
-                        <!-- General Form Elements -->
+                        <br>
+                        <h2 class="offset-4">
+                            Thêm Nhóm Quyền
+                        </h2>
+                        <br>
                         <form action="{{ route('group.store') }}" method="post">
                             @csrf
                             <div class="row mb-3">
@@ -16,6 +18,9 @@
                                 <div class="col-sm-10">
                                     <input type="text" name="name" placeholder="Nhập Tên Nhóm Quyền"
                                         class="form-control">
+                                    @error('name')
+                                        <div class="text text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <br>
@@ -25,8 +30,7 @@
                                     <a href="{{ route('group.index') }}" class="btn btn-danger">Hủy</a>
                                 </div>
                             </div>
-
-                        </form><!-- End General Form Elements -->
+                        </form>
                     </div>
                 </div>
             </div>
