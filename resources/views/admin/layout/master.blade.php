@@ -66,7 +66,9 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
+  <section id="main-footer">
   @include('admin.includes.footer')
+  </section>
   <!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -83,6 +85,7 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset('admin/assets/js/main.js')}}"></script>
+
   <!-- Jquery thảo -->
   <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
         integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous">
@@ -144,10 +147,7 @@
 //     @php
 //  }
 //     @endphp
-
-
 </script>
 {{-- end thao --}}
 </body>
-
 </html>

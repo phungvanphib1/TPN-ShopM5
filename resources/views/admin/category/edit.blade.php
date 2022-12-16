@@ -6,7 +6,10 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">General Form Elements</h5>
+                        <br>
+                        <h2 class="offset-4">
+                           Chỉnh Sửa Loại Sản Phẩm
+                        </h2>
                         <!-- General Form Elements -->
                         <form action="{{ route('category.update', [$category->id]) }}" method="post">
                             @method('put')
@@ -14,8 +17,10 @@
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Tên Loại Sản Phẩm</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="name" value="{{$category->name}}" placeholder="Nhập Tên Loại Sản Phẩm"
-                                        class="form-control">
+                                    <input type="text" name="name" value="{{ $category->name }}" class="form-control">
+                                    @error('name')
+                                        <div class="text text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <br>

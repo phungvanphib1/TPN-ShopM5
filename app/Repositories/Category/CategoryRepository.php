@@ -18,15 +18,11 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         $key                    = $request->key ?? '';
         $id                     = $request->id ?? '';
         $name                   = $request->name ?? '';
-        $status                   = $request->status ?? '';
         // thực hiện query
         $query = Category::select('*');
         $query->orderBy('id', 'DESC');
         if ($name) {
             $query->where('name', 'LIKE', '%' . $name . '%');
-        }
-        if ($status) {
-            $query->where('status', 'LIKE', '%' . $status . '%');
         }
         if ($id) {
             $query->where('id', $id);
@@ -45,7 +41,6 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         $category = $query->paginate(5);
         return $category;
     }
-
     public function restore($id)
     {
         $category = $this->model->withTrashed()->findOrFail($id);

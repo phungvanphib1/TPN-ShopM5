@@ -7,34 +7,28 @@
                     <div class="card-body">
                         <br>
                         <h2 class="offset-4">
-                            Loại Sản Phẩm
+                            Nhóm Quyền
                         </h2>
-                        <a class="btn btn-primary" href="{{ route('category.create') }}"> Thêm Loại Sản Phẩm </a>
-
+                        <a class="btn btn-primary" href="{{ route('group.create') }}"> Thêm Nhóm Quyền </a>
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col"></th>
                                     <th scope="col">STT</th>
-                                    <th scope="col">Tên</th>
-                                    <th scope="col">Hiện số lượng sản phẩm</th>
+                                    <th scope="col">Tên Nhóm Quyền</th>
                                     <th scope="col">Tùy Chọn</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($categories as $key => $category)
+                                @foreach ($groups as $key => $group)
                                     <tr>
-                                        <td></td>
                                         <th scope="row">{{ ++$key }}</th>
-                                        <td>{{ $category->name }}</td>
-                                        <td>#</td>
-                                        {{-- <td>{{ count($category->products) }}</td> --}}
+                                        <td>{{ $group->name }}</td>
                                         <td>
-                                            <form action="{{ route('category.destroy', $category->id) }}" method="post">
+                                            <form action="{{ route('group.destroy', $group->id) }}" method="post">
                                                 @method('DELETE')
                                                 @csrf
-                                                <a href="{{ route('category.edit', $category->id) }}"
-                                                    class='btn btn-warning'> Sửa </a>
+                                                <a href="{{ route('group.edit', $group->id) }}" class='btn btn-warning'> Sửa
+                                                </a>
                                                 <button
                                                     onclick="return confirm('Bạn có chắc muốn đưa danh mục này vào thùng rác không?');"
                                                     class='btn btn-danger' type="submit">Xóa</button>
@@ -45,10 +39,11 @@
                             </tbody>
                         </table>
                         <div style="float:right">
-                            {{ $categories->onEachSide(5)->links() }}
+                            {{ $groups->onEachSide(5)->links() }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    @endsection
+    </section>
+@endsection

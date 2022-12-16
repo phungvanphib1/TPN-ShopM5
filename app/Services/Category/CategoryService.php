@@ -27,11 +27,6 @@ class CategoryService extends BaseService implements CategoryServiceInterface {
     {
         return $this->repository->getTrash();
     }
-
-    // public function trashedItems()
-    // {
-    //     return $this->repository->trashedItems();
-    // }
     public function restore($id){
         return $this->repository->restore($id);
     }
