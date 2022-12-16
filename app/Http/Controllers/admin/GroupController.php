@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Group\StoreGroupRequest;
+use App\Http\Requests\Group\UpdateGroupRequest;
 use App\Services\Group\GroupServiceInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 
 class GroupController extends Controller
 {
@@ -41,10 +45,24 @@ class GroupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreGroupRequest $request)
     {
-        $this->groupService->create($request);
-        return redirect()->route('group.index');
+        try {
+            $this->groupService->create($request);
+            $notification = [
+                'message' => 'Thêm nhóm quyền thành công!',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('group.index')->with($notification);
+            } catch (\Exception $e) {
+                Session::flash('error', config('define.store.error'));
+                Log::error('message:'. $e->getMessage());
+                $notification = [
+                    'message' => 'có lỗi xảy ra!',
+                    'alert-type' => 'error'
+                ];
+                return redirect()->route('group.index')->with($notification);
+            }
     }
     /**
      * Display the specified resource.
@@ -76,10 +94,24 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateGroupRequest $request, $id)
     {
-        $this->groupService->update( $id, $request);
-        return redirect()->route('group.index');
+        try{
+            $this->groupService->update( $id, $request);
+            $notification = [
+                'message' => 'Cập nhật thành công!',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('group.index')->with($notification);
+        } catch (\Exception $e) {
+            Session::flash('error', config('define.update.error'));
+            Log::error('message:'. $e->getMessage());
+            $notification = [
+                'message' => 'có lỗi xảy ra!',
+                'alert-type' => 'error'
+            ];
+            return redirect()->route('group.index')->with($notification);
+        }
     }
 
     /**
@@ -90,20 +122,63 @@ class GroupController extends Controller
      */
     public function destroy($id)
     {
-        $category = $this->groupService->delete($id);
-        return redirect()->route('group.index');
+        try{
+            $group = $this->groupService->delete($id);
+            $notification = [
+                'message' => 'Đã chuyển vào thùng rác!',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('group.index')->with($notification);
+        } catch (\Exception $e) {
+            Session::flash('error', config('define.destroy.error'));
+            Log::error('message:'. $e->getMessage());
+            $notification = [
+                'message' => 'có lỗi xảy ra!',
+                'alert-type' => 'error'
+            ];
+            return redirect()->route('group.index')->with($notification);
+        }
     }
     public function trash(){
         $groups = $this->groupService->getTrash();
         return view('admin.groups.trash', compact('groups'));
     }
-    public function forcedelete($id){
-        $this->groupService->forceDelete($id);
-        return redirect()->route('group.trash');
+    public function forcedelete($id)
+    {
+        try{
+            $this->groupService->forceDelete($id);
+            $notification = [
+                'message' => 'Nhóm quyền đã bị xóa!',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('group.trash')->with($notification);
+        } catch (\Exception $e) {
+            Session::flash('error', config('define.forceDelete.error'));
+            Log::error('message:'. $e->getMessage());
+            $notification = [
+                'message' => 'có lỗi xảy ra!',
+                'alert-type' => 'error'
+            ];
+            return redirect()->route('group.trash')->with($notification);
+        }
     }
 
     public function restore($id){
-        $this->groupService->restore($id);
-        return redirect()->route('group.trash');
-}
+        try{
+            $this->groupService->restore($id);
+            $notification = [
+                'message' => 'Khôi phục thành công!',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('group.trash')->with($notification);
+        } catch (\Exception $e) {
+            Session::flash('error', config('define.restore.error'));
+            Log::error('message:'. $e->getMessage());
+            $notification = [
+                'message' => 'có lỗi xảy ra!',
+                'alert-type' => 'error'
+            ];
+            return redirect()->route('group.trash')->with($notification);
+        }
+    }
 }
