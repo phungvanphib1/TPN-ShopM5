@@ -45,7 +45,6 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         $category = $query->paginate(5);
         return $category;
     }
-
     public function restore($id)
     {
         $category = $this->model->withTrashed()->findOrFail($id);

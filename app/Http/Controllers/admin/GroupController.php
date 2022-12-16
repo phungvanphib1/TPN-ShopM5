@@ -3,25 +3,26 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Services\Category\CategoryServiceInterface;
+use App\Services\Group\GroupServiceInterface;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class GroupController extends Controller
 {
-    private $categoryService;
-    public function __construct(CategoryServiceInterface $categoryService)
+    private $groupService;
+    public function __construct(GroupServiceInterface $GroupService)
     {
-        $this->categoryService = $categoryService;
+        $this->groupService = $GroupService;
     }
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        $categories = $this->categoryService->all($request);
-        return view('admin.category.index', compact('categories'));
+        $groups = $this->groupService->all($request);
+        return view('admin.groups.index', compact('groups'));
+
     }
 
     /**
@@ -31,7 +32,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.add');
+        return view('admin.groups.add');
     }
 
     /**
@@ -42,9 +43,8 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $this->categoryService->create($data);
-        return redirect()->route('category.index');
+        $this->groupService->create($request);
+        return redirect()->route('group.index');
     }
     /**
      * Display the specified resource.
@@ -65,8 +65,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = $this->categoryService->find($id);
-        return view('admin.category.edit' , compact('category')) ;
+        $group = $this->groupService->find($id);
+        return view('admin.groups.edit' , compact('group')) ;
     }
 
     /**
@@ -78,9 +78,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-            $this->categoryService->update( $id, $data);
-            return redirect()->route('category.index');
+        $this->groupService->update( $id, $request);
+        return redirect()->route('group.index');
     }
 
     /**
@@ -91,22 +90,20 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-            $category = $this->categoryService->delete($id);
-            return redirect()->route('category.index');
+        $category = $this->groupService->delete($id);
+        return redirect()->route('group.index');
     }
-
     public function trash(){
-        $categories = $this->categoryService->getTrash();
-        return view('admin.category.trash', compact('categories'));
+        $groups = $this->groupService->getTrash();
+        return view('admin.groups.trash', compact('groups'));
+    }
+    public function forcedelete($id){
+        $this->groupService->forceDelete($id);
+        return redirect()->route('group.trash');
     }
 
     public function restore($id){
-            $this->categoryService->restore($id);
-            return redirect()->route('category.trash');
-    }
-
-    public function forcedelete($id){
-            $this->categoryService->forceDelete($id);
-            return redirect()->route('category.trash');
-    }
+        $this->groupService->restore($id);
+        return redirect()->route('group.trash');
+}
 }
