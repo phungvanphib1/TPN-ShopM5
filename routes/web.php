@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\admin\CategoryController;
+
+use App\Http\Controllers\admin\ProductController;
+
 use App\Http\Controllers\admin\GroupController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +34,14 @@ Route::group(['prefix' => 'categories'], function () {
     Route::put('/restore/{id}', [CategoryController::class, 'restore'])->name('category.restore');
     Route::delete('/forcedelete/{id}', [CategoryController::class, 'forcedelete'])->name('category.forcedelete');
 });
-// group
+Route::prefix('products')->group(function () {
+    Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('product.destroy');
+    Route::get('/trash', [ProductController::class, 'trash'])->name('product.trash');
+    Route::put('/restore/{id}', [ProductController::class, 'restore'])->name('product.restore');
+    Route::delete('/forcedelete/{id}', [ProductController::class, 'forcedelete'])->name('product.forcedelete');
+});
+Route::resource('products',ProductController::class);
+
 Route::group(['prefix' => 'groups'], function () {
     Route::get('/', [GroupController::class, 'index'])->name('group.index');
     Route::get('/create', [GroupController::class, 'create'])->name('group.create');
@@ -42,4 +53,5 @@ Route::group(['prefix' => 'groups'], function () {
     Route::put('/restore/{id}', [GroupController::class, 'restore'])->name('group.restore');
     Route::delete('/forcedelete/{id}', [GroupController::class, 'forcedelete'])->name('group.forcedelete');
 });
+
 
