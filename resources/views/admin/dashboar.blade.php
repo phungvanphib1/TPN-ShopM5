@@ -17,7 +17,7 @@
             <div class="row">
 
                 <!-- Sales Card -->
-                <div class="col-xxl-3 col-md-6">
+                <div class="col-xxl-3 col-md-3">
                     <div class="card info-card sales-card">
 
                         <div class="card-body">
@@ -41,7 +41,7 @@
                 <!-- End Sales Card -->
 
                 <!-- Revenue Card -->
-                <div class="col-xxl-3 col-md-6">
+                <div class="col-xxl-3 col-md-3">
                     <div class="card info-card revenue-card">
 
                         <div class="card-body">
@@ -65,7 +65,7 @@
                 <!-- End Revenue Card -->
 
                 <!-- Customers Card -->
-                <div class="col-xxl-3 col-md-6">
+                <div class="col-xxl-3 col-md-3">
 
                     <div class="card info-card customers-card">
 
@@ -91,7 +91,7 @@
                 </div><!-- End Customers Card -->
 
                 <!-- Customers Card -->
-                <div class="col-xxl-3 col-md-6">
+                <div class="col-xxl-3 col-md-3">
                     <div class="card info-card revenue-card">
 
                         <div class="card-body">
@@ -338,7 +338,7 @@
                 </div>
             </div>
             <!-- End Website Traffic -->
-            
+
         </div>
         <!-- End Right side columns -->
     </div>
