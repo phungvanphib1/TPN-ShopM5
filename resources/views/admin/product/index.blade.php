@@ -36,7 +36,7 @@
                                         @if ($product->category)
                                             <td>{{ $product->category->name }}</td>
                                         @else
-                                            <td style="color: red">Kiểm tra thùng rác Loại/
+                                            <td style="color: red">Loại này đã bị xóa|
                                                 <span>id:{{ $product->category_id }}</span>
                                             </td>
                                         @endif

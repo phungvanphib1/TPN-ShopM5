@@ -45,7 +45,6 @@ class UpdateUserRequest extends FormRequest
             'birthday.required' => 'Không được để trống!',
             'gender.required' => 'Không được để trống!',
             'group_id.required' => 'Không được để trống!',
-
         ];
     }
 }
