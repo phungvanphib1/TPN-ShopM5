@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\CategoryController;
-
+use App\Http\Controllers\admin\CustomerController;
 use App\Http\Controllers\admin\ProductController;
 
 use App\Http\Controllers\admin\GroupController;
@@ -55,6 +55,13 @@ Route::group(['prefix' => 'groups'], function () {
     Route::put('/restore/{id}', [GroupController::class, 'restore'])->name('group.restore');
     Route::delete('/forcedelete/{id}', [GroupController::class, 'forcedelete'])->name('group.forcedelete');
 });
+Route::prefix('customers')->group(function () {
+    // Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('product.destroy');
+    // Route::get('/trash', [ProductController::class, 'trash'])->name('product.trash');
+    // Route::put('/restore/{id}', [ProductController::class, 'restore'])->name('product.restore');
+    // Route::delete('/forcedelete/{id}', [ProductController::class, 'forcedelete'])->name('product.forcedelete');
+});
+Route::resource('customers',CustomerController::class);
 
 //  user
 Route::prefix('users')->group(function () {

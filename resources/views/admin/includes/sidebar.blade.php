@@ -94,6 +94,24 @@
                 <i class="bi bi-layout-text-window-reverse"></i><span>Quản Lí Nhân Viên </span><i
                     class="bi bi-chevron-down ms-auto"></i>
             </a>
+
+          </li>
+          <li>
+            <a href="{{route('products.create')}}">
+              <i class="bi bi-circle"></i><span>Thêm Sản Phẩm</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('product.trash')}}">
+              <i class="bi bi-circle"></i><span>Thùng Rác</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <!-- End Tables Nav -->
+
+      <li class="nav-item">
+
             <ul id="charts-navs" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ route('users.index') }}">
@@ -108,35 +126,30 @@
             </ul>
         </li>
         <!-- End Forms Nav -->
+        
+        <!-- End Forms Nav -->
+        <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-bar-chart"></i><span>Khách Hàng</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{route('customers.index')}}">
+              <i class="bi bi-circle"></i><span>Danh Sách Khách Hàng</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+       <!-- End Forms Nav -->
 
     </ul>
 
 
 
-    {{-- <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-bar-chart"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="charts-chartjs.html">
-              <i class="bi bi-circle"></i><span>Chart.js</span>
-            </a>
-          </li>
-          <li>
-            <a href="charts-apexcharts.html">
-              <i class="bi bi-circle"></i><span>ApexCharts</span>
-            </a>
-          </li>
-          <li>
-            <a href="charts-echarts.html">
-              <i class="bi bi-circle"></i><span>ECharts</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Charts Nav -->
+    
+      <!-- End Charts Nav -->
 
-      <li class="nav-item">
+       {{-- <li class="nav-item"> 
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>

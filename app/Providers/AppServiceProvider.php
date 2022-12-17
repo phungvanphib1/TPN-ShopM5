@@ -10,6 +10,8 @@ use App\Services\Category\CategoryService;
 use App\Services\Category\CategoryServiceInterface;
 
 use App\Repositories\Category\ProductRepositoryInterface;
+use App\Repositories\Customer\CustomerRepository;
+use App\Repositories\Customer\CustomerRepositoryInterface;
 use App\Repositories\Product\ProductRepository;
 use App\Repositories\Product\ProductRepositoryInterface as ProductProductRepositoryInterface;
 use App\Services\Product\ProductService;
@@ -17,8 +19,13 @@ use App\Services\Product\ProductServiceInterface;
 
 use App\Repositories\Group\GroupRepository;
 use App\Repositories\Group\GroupRepositoryInterface;
+
+use App\Services\Customer\CustomerService;
+use App\Services\Customer\CustomerServiceInterface;
+
 use App\Repositories\User\UserRepository;
 use App\Repositories\User\UserRepositoryInterface;
+
 use App\Services\Group\GroupService;
 use App\Services\Group\GroupServiceInterface;
 
@@ -49,9 +56,15 @@ class AppServiceProvider extends ServiceProvider
         // đăng ký group
         $this->app->bind(GroupRepositoryInterface::class, GroupRepository::class);
         $this->app->bind(GroupServiceInterface::class, GroupService::class);
+
+        // đăng ký customer
+        $this->app->bind(CustomerRepositoryInterface::class, CustomerRepository::class);
+        $this->app->bind(CustomerServiceInterface::class, CustomerService::class);
+
         // đăng ký user
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(UserServiceInterface::class, UserService::class);
+
     }
     /**
      * Bootstrap any application services.
