@@ -6,6 +6,8 @@ use App\Http\Controllers\admin\ProductController;
 
 use App\Http\Controllers\admin\GroupController;
 
+use App\Http\Controllers\admin\UserController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,4 +63,9 @@ Route::prefix('customers')->group(function () {
 });
 Route::resource('customers',CustomerController::class);
 
-
+//  user
+Route::prefix('users')->group(function () {
+    Route::get('GetDistricts', [UserController::class, 'GetDistricts'])->name('user.GetDistricts');
+    Route::get('getWards', [UserController::class, 'getWards'])->name('user.getWards');
+});
+Route::resource('users',UserController::class);
