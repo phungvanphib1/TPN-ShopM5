@@ -6,6 +6,8 @@ use App\Http\Controllers\admin\ProductController;
 
 use App\Http\Controllers\admin\GroupController;
 
+use App\Http\Controllers\admin\UserController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,4 +56,9 @@ Route::group(['prefix' => 'groups'], function () {
     Route::delete('/forcedelete/{id}', [GroupController::class, 'forcedelete'])->name('group.forcedelete');
 });
 
-
+//  user
+Route::prefix('users')->group(function () {
+    Route::get('GetDistricts', [UserController::class, 'GetDistricts'])->name('user.GetDistricts');
+    Route::get('getWards', [UserController::class, 'getWards'])->name('user.getWards');
+});
+Route::resource('users',UserController::class);

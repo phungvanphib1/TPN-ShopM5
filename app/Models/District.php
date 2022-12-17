@@ -13,3 +13,4 @@ class District extends Model
         return $this->belongsTo(Province::class,'district_id','id');
     }
 }
+

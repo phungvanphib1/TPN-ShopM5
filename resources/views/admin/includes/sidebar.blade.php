@@ -55,6 +55,23 @@
             </a>
           </li>
         </ul>
+
+      </li><!-- End Forms Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Quản Lí Nhân Viên </span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{ route('users.index') }}">
+              <i class="bi bi-circle"></i><span>Danh Sách Nhân Viên </span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ route('users.create') }}">
+              <i class="bi bi-circle"></i><span>Đăng Kí Tài Khoản</span>
+
       </li>
       <!-- End Forms Nav -->
        <li class="nav-item">
