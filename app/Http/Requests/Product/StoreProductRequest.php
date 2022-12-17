@@ -24,10 +24,10 @@ class StoreProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|unique:products',
             'category_id' => 'required',
-            'quantity' => 'required|numeric',
-            'price' => 'required|numeric',
+            'quantity' => 'required',
+            'price' => 'required',
             'description' => 'required',
             'image' => 'required',
         ];
@@ -36,6 +36,7 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name.required' => ':attribute  bắt buộc nhập',
+            'name.unique' => ':attribute đã tồn tại',
             'category_id.required' => ':attribute bắt buộc nhập ',
             'quantity.required' => ':attribute bắt buộc nhập',
             'quantity.numeric' => ':attribute bắt buộc nhập số ',
