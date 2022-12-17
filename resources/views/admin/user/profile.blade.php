@@ -2,6 +2,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
+            <br>
             <h2 class="offset-4">
                 Thông tin chi tiết
             </h2>
@@ -68,6 +69,4 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
 @endsection
