@@ -36,7 +36,7 @@
                                                     <label for="tf1">Mật Khẩu<abbr
                                                             name="Trường bắt buộc">*</abbr></label>
                                                     <input name="password" type="text" class="form-control"
-                                                        value="{{ old('password') }}">
+                                                        value="">
                                                     <small id="" class="form-text text-muted"></small>
                                                     @error('password')
                                                         <div class="text text-danger">{{ $message }}</div>
@@ -44,7 +44,7 @@
                                                     <br>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-8">
                                                 <div class="form-group">
                                                     <label for="tf1">Họ Và Tên<abbr
                                                             name="Trường bắt buộc">*</abbr></label>
@@ -66,18 +66,7 @@
                                                         <div class="text text-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label for="tf1">Ngày sinh<abbr
-                                                            name="Trường bắt buộc">*</abbr></label> <input name="birthday"
-                                                        type="date" class="form-control" value="{{ old('birthday') }}">
-                                                    <small id="" class="form-text text-muted"></small>
-                                                    @error('birthday')
-                                                        <div class="text text-danger">{{ $message }}</div>
-                                                    @enderror
-                                                    <br>
-                                                </div>
+                                                <br>
                                             </div>
                                             <div class="form-group col-lg-4">
                                                 <label class="control-label" for="flatpickr01">Chức Vụ<abbr
@@ -88,12 +77,37 @@
                                                         <option value="{{ $group->id }}">{{ $group->name }}</option>
                                                     @endforeach
                                                 </select>
-                                                @if ('group_id')
-                                                    <p style="color:red">{{ $errors->first('group_id') }}</p>
-                                                @endif
                                                 @error('group_id')
                                                     <div class="text text-danger">{{ $message }}</div>
                                                 @enderror
+                                            </div>
+
+                                            <div class="form-group col-lg-4">
+                                                <label class="control-label" for="flatpickr01">Giới Tính<abbr
+                                                        name="Trường bắt buộc">*</abbr></label>
+                                                <select name="gender" id="" class="form-control">
+                                                    <option value="">--Vui lòng chọn--</option>
+                                                    <option value="Nam">Nam</option>
+                                                    <option value="Nữ">Nữ</option>
+                                                    <option value="Khác">Khác</option>
+                                                </select>
+                                                @if ('gender')
+                                                    <p style="color:red">{{ $errors->first('gender') }}</p>
+                                                @endif
+
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label for="tf1">Ngày sinh<abbr
+                                                            name="Trường bắt buộc">*</abbr></label> <input name="birthday"
+                                                        type="date" class="form-control" value="{{ old('birthday') }}">
+                                                    <small id="" class="form-text text-muted"></small>
+                                                    @error('birthday')
+                                                        <div class="text text-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                                <br>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
@@ -136,20 +150,22 @@
                                                         <div class="text text-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
+                                                <br>
                                             </div>
 
-                                            <div class="form-group col-lg-4">
-                                                <label class="control-label" for="flatpickr01">Giới Tính<abbr
-                                                        name="Trường bắt buộc">*</abbr></label>
-                                                <select name="gender" id="" class="form-control">
-                                                    <option value="">--Vui lòng chọn--</option>
-                                                    <option value="Nam">Nam</option>
-                                                    <option value="Nữ">Nữ</option>
-                                                    <option value="Khác">Khác</option>
-                                                </select>
-                                                @if ('gender')
-                                                    <p style="color:red">{{ $errors->first('gender') }}</p>
-                                                @endif
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <label for="tf1">Địa chỉ chi tiết<abbr
+                                                            name="Trường bắt buộc">*</abbr></label> <input name="address"
+                                                        type="text" class="form-control"
+                                                        value="{{ old('address') }}">
+                                                    <small id="" class="form-text text-primary">Ví dụ: Số 20/Hai Bà Trưng... </small>
+                                                    @error('address')
+                                                        <div class="text text-danger">{{ $message }}</div>
+                                                    @enderror
+                                                    <br>
+                                                </div>
+                                                <br>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="inputCity" class="form-label">Ảnh đại diện</label>
@@ -162,19 +178,7 @@
                                                 <img type="hidden" width="120px" height="120px" id="blah"
                                                     src="" alt="" />
                                             </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-group">
-                                                    <label for="tf1">Địa chỉ<abbr
-                                                            name="Trường bắt buộc">*</abbr></label> <input name="address"
-                                                        type="text" class="form-control"
-                                                        value="{{ old('address') }}">
-                                                    <small id="" class="form-text text-muted"></small>
-                                                    @error('address')
-                                                        <div class="text text-danger">{{ $message }}</div>
-                                                    @enderror
-                                                    <br>
-                                                </div>
-                                            </div>
+
                                         </div>
                                         <div class="form-actions">
                                             <br><br><br><br>

@@ -37,9 +37,7 @@ class UpdateProductRequest extends FormRequest
             'name.required' => ':attribute  bắt buộc nhập',
             'category_id.required' => ':attribute bắt buộc nhập ',
             'quantity.required' => ':attribute bắt buộc nhập',
-            'quantity.numeric' => ':attribute bắt buộc nhập số ',
             'price.required' => ':attribute bắt buộc nhập',
-            'price.numeric' => ':attribute Bắt buộc nhập số ',
             'description.required' => ':attribute bắt buộc nhập',
         ];
     }
