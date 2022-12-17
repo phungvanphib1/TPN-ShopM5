@@ -17,6 +17,8 @@ use App\Services\Product\ProductServiceInterface;
 
 use App\Repositories\Group\GroupRepository;
 use App\Repositories\Group\GroupRepositoryInterface;
+use App\Repositories\User\UserRepository;
+use App\Repositories\User\UserRepositoryInterface;
 use App\Services\Group\GroupService;
 use App\Services\Group\GroupServiceInterface;
 
