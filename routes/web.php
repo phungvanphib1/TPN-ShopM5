@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\GroupController;
+use App\Http\Controllers\admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,4 +43,12 @@ Route::group(['prefix' => 'groups'], function () {
     Route::put('/restore/{id}', [GroupController::class, 'restore'])->name('group.restore');
     Route::delete('/forcedelete/{id}', [GroupController::class, 'forcedelete'])->name('group.forcedelete');
 });
-
+//  user
+Route::prefix('users')->group(function () {
+    Route::put('softDeletes/{id}',[UserController::class,'softDeletes'])->name('users.softDeletes');
+    Route::get('trash',[UserController::class,'trash'])->name('users.trash');
+    Route::put('restore/{id}',[UserController::class, 'restore'])->name('users.restore');
+    Route::get('GetDistricts', [UserController::class, 'GetDistricts'])->name('user.GetDistricts');
+    Route::get('getWards', [UserController::class, 'getWards'])->name('user.getWards');
+});
+Route::resource('users',UserController::class);
