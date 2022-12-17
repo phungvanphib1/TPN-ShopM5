@@ -8,8 +8,7 @@
                 <span>Dashboard</span>
             </a>
         </li>
-        <!-- End Dashboard Nav -->
-
+        <!--Components Nav -->
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Loại Sản Phẩm</span><i
@@ -33,10 +32,9 @@
                 </li>
             </ul>
         </li>
-
         <!-- End Components Nav -->
 
-        <!-- End Forms Nav -->
+        <!--Forms Nav -->
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-layout-text-window-reverse"></i><span>Sản Phẩm</span><i
@@ -62,7 +60,7 @@
         </li>
         <!-- End Tables Nav -->
 
-        <!-- End Forms Nav -->
+        <!-- Forms Nav -->
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-journal-text"></i><span>Nhóm Quyền</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -84,72 +82,52 @@
                     </a>
                 </li>
             </ul>
-
         </li>
         <!-- End Forms Nav -->
 
-        <!-- End Forms Nav -->
+        <!--Forms Nav -->
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#charts-navs" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-layout-text-window-reverse"></i><span>Quản Lí Nhân Viên </span><i
-                    class="bi bi-chevron-down ms-auto"></i>
+            <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-bar-chart"></i><span>Khách Hàng</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-
-          </li>
-          <li>
-            <a href="{{route('products.create')}}">
-              <i class="bi bi-circle"></i><span>Thêm Sản Phẩm</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{route('product.trash')}}">
-              <i class="bi bi-circle"></i><span>Thùng Rác</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <!-- End Tables Nav -->
-
-      <li class="nav-item">
-
-            <ul id="charts-navs" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('users.index') }}">
-                        <i class="bi bi-circle"></i><span>Danh Sách Nhân Viên </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('users.create') }}">
-                        <i class="bi bi-circle"></i><span>Đăng Kí Tài Khoản</span>
+                    <a href="{{ route('customers.index') }}">
+                        <i class="bi bi-circle"></i><span>Danh Sách Khách Hàng</span>
                     </a>
                 </li>
             </ul>
         </li>
         <!-- End Forms Nav -->
-        
-        <!-- End Forms Nav -->
+
+        <!-- Forms Nav -->
         <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-bar-chart"></i><span>Khách Hàng</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="{{route('customers.index')}}">
-              <i class="bi bi-circle"></i><span>Danh Sách Khách Hàng</span>
+            <a class="nav-link collapsed" data-bs-target="#charts-navs" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-layout-text-window-reverse"></i><span>Quản Lí Nhân Viên </span><i
+                    class="bi bi-chevron-down ms-auto"></i>
             </a>
-          </li>
-        </ul>
-      </li>
-       <!-- End Forms Nav -->
+            <li class="nav-item">
+                <ul id="charts-navs" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ route('users.index') }}">
+                            <i class="bi bi-circle"></i><span>Danh Sách Nhân Viên </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('users.create') }}">
+                            <i class="bi bi-circle"></i><span>Đăng Kí Tài Khoản</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </li>
+         <!-- End Forms Nav -->
 
     </ul>
 
+    <!-- End Charts Nav -->
 
-
-    
-      <!-- End Charts Nav -->
-
-       {{-- <li class="nav-item"> 
+    {{-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
