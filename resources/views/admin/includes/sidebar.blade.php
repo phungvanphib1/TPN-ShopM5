@@ -7,7 +7,8 @@
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
-      </li><!-- End Dashboard Nav -->
+      </li>
+      <!-- End Dashboard Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
@@ -33,7 +34,6 @@
       </li>
 
       <!-- End Components Nav -->
-
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Nhóm Quyền</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -55,6 +55,7 @@
             </a>
           </li>
         </ul>
+
       </li><!-- End Forms Nav -->
 
       <li class="nav-item">
@@ -70,10 +71,32 @@
           <li>
             <a href="{{ route('users.create') }}">
               <i class="bi bi-circle"></i><span>Đăng Kí Tài Khoản</span>
+
+      </li>
+      <!-- End Forms Nav -->
+       <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Sản Phẩm</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{route('products.index')}}">
+              <i class="bi bi-circle"></i><span>Danh Sách Sản Phẩm</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('products.create')}}">
+              <i class="bi bi-circle"></i><span>Thêm Sản Phẩm</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('product.trash')}}">
+              <i class="bi bi-circle"></i><span>Thùng Rác</span>
             </a>
           </li>
         </ul>
-      </li><!-- End Tables Nav -->
+      </li>
+      <!-- End Tables Nav -->
 
       {{-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">

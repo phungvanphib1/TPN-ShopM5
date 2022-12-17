@@ -28,6 +28,21 @@
 
   <!-- Template Main CSS File -->
   <link href="{{asset('admin/assets/css/style.css')}}" rel="stylesheet">
+  <script src="{{ asset('themeAdmin/js/jquery.min.js') }}"></script>
+  <script src="{{ asset('themeAdmin/js/popper.min.js') }}"></script>
+  <script src="{{ asset('themeAdmin/js/bootstrap.min.js') }}"></script>
+  <!-- wow animation -->
+  <script src="{{ asset('themeAdmin/js/animate.js') }}"></script>
+  <!-- select country -->
+  <script src="{{ asset('themeAdmin/js/bootstrap-select.js') }}"></script>
+
+   <!-- phi country -->
+  <script src="{{ asset('themeAdmin/ckeditor/ckeditor.js') }}"></script>
+  <script>
+      CKEDITOR.replace('ckeditor');
+      CKEDITOR.replace('ckeditor1');
+  </script>
+   <!-- end phi -->
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.4.1
@@ -79,46 +94,68 @@
   <!-- Template Main JS File -->
   <script src="{{asset('admin/assets/js/main.js')}}"></script>
 
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js'></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.10.25/datatables.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Jquery thảo -->
+  <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous">
+    </script>
+
+
+    <script src="{{ asset('themeAdmin/js/owl.carousel.js') }}"></script>
+    <script src="{{ asset('themeAdmin/js/Chart.min.js') }}"></script>
+    <script src="{{ asset('themeAdmin/js/Chart.bundle.min.js') }}"></script>
+    <script src="{{ asset('themeAdmin/js/utils.js') }}"></script>
+    <script src="{{ asset('themeAdmin/js/analyser.js') }}"></script>
+    <script src="{{ asset('themeAdmin/js/perfect-scrollbar.min.js') }}"></script>
+    <script>
+        var ps = new PerfectScrollbar('#sidebar');
+    </script>
+    <script src="{{ asset('themeAdmin/js/custom.js') }}"></script>
+    <script src="{{ asset('themeAdmin/js/chart_custom_style1.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ asset('AdminTheme/ckeditor/ckeditor.js') }}"></script> <!-- END THEME JS -->
+    <script src="{{ asset('assets/js/uploadFile.js') }}"></script>
+    <script>
+        CKEDITOR.replace('ckeditor');
+        CKEDITOR.replace('ckeditor1');
+    </script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
-        @php
-       if(Session::has('message')){
-       @endphp
-        Swal.fire({
-            position: 'top-end',
-            // icon: 'success',
-            icon: "{{ Session::get('alert-type') }}",
-            title: "{{ Session::get('message') }}",
-            showConfirmButton: false,
-            timer: 1500
-        })
-        @php
-       }
-        @endphp
-    //    @php
-    //    if(Session::has('message')){
-    //    @endphp
-    //         const Toast = Swal.mixin({
-    //         toast: true,
-    //         position: 'top-end',
-    //         showConfirmButton: false,
-    //         timer: 3000,
-    //         timerProgressBar: true,
-    //         didOpen: (toast) => {
-    //             toast.addEventListener('mouseenter', Swal.stopTimer)
-    //             toast.addEventListener('mouseleave', Swal.resumeTimer)
-    //             }
-    //         })
-    //         Toast.fire({
-    //         icon: 'success',
-    //         title: 'Signed in successfully'
-    //         })
-    //     @php
-    //  }
-    //     @endphp
-	</script>
+    @php
+   if(Session::has('message')){
+    @endphp
+    Swal.fire({
+        position: 'top-end',
+        // icon: 'success',
+        icon: "{{ Session::get('alert-type') }}",
+        title: "{{ Session::get('message') }}",
+        showConfirmButton: false,
+        timer: 1500
+    })
+    @php
+   }
+    @endphp
+//    @php
+//    if(Session::has('message')){
+//    @endphp
+//         const Toast = Swal.mixin({
+//         toast: true,
+//         position: 'top-end',
+//         showConfirmButton: false,
+//         timer: 3000,
+//         timerProgressBar: true,
+//         didOpen: (toast) => {
+//             toast.addEventListener('mouseenter', Swal.stopTimer)
+//             toast.addEventListener('mouseleave', Swal.resumeTimer)
+//             }
+//         })
+//         Toast.fire({
+//         icon: 'success',
+//         title: 'Signed in successfully'
+//         })
+//     @php
+//  }
+//     @endphp
+</script>
+{{-- end thao --}}
 </body>
 </html>
