@@ -12,10 +12,12 @@ class Product extends Model
     protected $table = 'products';
     protected $guarded = [];
     protected $fillable = ['name','price','quantity','description','category_id','view_count','image'];
-    public function products()
+
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }
+
     public function image_products(){
         return $this->hasMany(Image_Product::class, 'product_id','id');
     }

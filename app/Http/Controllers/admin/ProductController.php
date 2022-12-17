@@ -29,9 +29,13 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $products = Product::all();
-        $categories = Category::all();
+        $categories = Category::get();
         $products = $this->productService->all($request);
-        return view('admin.product.index', compact('products','categories'));
+        $params = [
+            'categories' => $categories,
+            'products' => $products
+        ];
+        return view('admin.product.index', $params);
     }
 
     /**
@@ -59,11 +63,10 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         $data = $request->all();
-        // dd($data);
         try {
         $this->productService->create($data);
         $notification = [
-            'message' => 'Thêm loại sản phẩm thành công!',
+            'message' => 'Thêm sản phẩm thành công!',
             'alert-type' => 'success'
         ];
         return redirect()->route('products.index')->with($notification);
@@ -71,7 +74,7 @@ class ProductController extends Controller
             Session::flash('error', config('define.store.error'));
             Log::error('message:'. $e->getMessage());
             $notification = [
-                'message' => 'có lôi say ra!',
+                'message' => 'có lôi xay ra!',
                 'alert-type' => 'error'
             ];
             return redirect()->route('products.index')->with($notification);
@@ -98,8 +101,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $categories = Category::get();
-        $products = $this->productService->find($id);
-        return view('admin.product.edit' , compact('products','categories')) ;
+        $product = $this->productService->find($id);
+        return view('admin.product.edit' , compact('product','categories')) ;
     }
 
     /**
@@ -138,8 +141,22 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-            $products = $this->productService->delete($id);
-            return redirect()->route('products.index');
+        try{
+            $product = $this->productService->delete($id);
+            $notification = [
+                'message' => 'Sản phẩm đã vào thùng rác!',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('products.index')->with($notification);
+        } catch (\Exception $e) {
+            Session::flash('error', config('define.destroy.error'));
+            Log::error('message:'. $e->getMessage());
+            $notification = [
+                'message' => 'có lôi say ra!',
+                'alert-type' => 'error'
+            ];
+            return redirect()->route('products.index')->with($notification);
+        }
     }
 
     public function trash(){
@@ -148,12 +165,40 @@ class ProductController extends Controller
     }
 
     public function restore($id){
+        try{
             $this->productService->restore($id);
-            return redirect()->route('product.trash');
+            $notification = [
+                'message' => 'Đã khôi phục sản phẩm!',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('product.trash')->with($notification);
+        } catch (\Exception $e) {
+            Session::flash('error', config('define.restore.error'));
+            Log::error('message:'. $e->getMessage());
+            $notification = [
+                'message' => 'có lôi say ra!',
+                'alert-type' => 'error'
+            ];
+            return redirect()->route('product.trash')->with($notification);
+        }
     }
 
     public function forcedelete($id){
+        try{
             $this->productService->forceDelete($id);
-            return redirect()->route('product.trash');
+            $notification = [
+                'message' => 'Đã xóa sản phẩm',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('product.trash')->with($notification);
+        } catch (\Exception $e) {
+            Session::flash('error', config('define.forceDelete.error'));
+            Log::error('message:'. $e->getMessage());
+            $notification = [
+                'message' => 'có lôi say ra!',
+                'alert-type' => 'error'
+            ];
+            return redirect()->route('product.trash')->with($notification);
+        }
     }
 }

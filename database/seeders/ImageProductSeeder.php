@@ -18,7 +18,11 @@ class ImageProductSeeder extends Seeder
         DB::table('image_products')->insert([
             [
                 'product_id' => '1',
-                'image' => '',
+                'image' => '1jCVdawgaYEAN8g7RCOxHH1mkA9IJcixSfQlmkNk.png',
+            ],
+            [
+                'product_id' => '2',
+                'image' => '1jCVdawgaYEAN8g7RCOxHH1mkA9IJcixSfQlmkNk.png',
             ],
         ]);
     }

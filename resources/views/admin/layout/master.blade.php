@@ -36,6 +36,14 @@
   <!-- select country -->
   <script src="{{ asset('themeAdmin/js/bootstrap-select.js') }}"></script>
 
+   <!-- phi country -->
+  <script src="{{ asset('themeAdmin/ckeditor/ckeditor.js') }}"></script>
+  <script>
+      CKEDITOR.replace('ckeditor');
+      CKEDITOR.replace('ckeditor1');
+  </script>
+   <!-- end phi -->
+
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.4.1
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -91,7 +99,7 @@
         integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous">
     </script>
 
-    
+
     <script src="{{ asset('themeAdmin/js/owl.carousel.js') }}"></script>
     <script src="{{ asset('themeAdmin/js/Chart.min.js') }}"></script>
     <script src="{{ asset('themeAdmin/js/Chart.bundle.min.js') }}"></script>
