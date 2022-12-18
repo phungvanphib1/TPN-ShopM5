@@ -35,12 +35,12 @@ Route::group(['prefix' => 'categories'], function () {
     Route::delete('/forcedelete/{id}', [CategoryController::class, 'forcedelete'])->name('category.forcedelete');
 });
 Route::prefix('products')->group(function () {
-    Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('product.destroy');
     Route::get('/trash', [ProductController::class, 'trash'])->name('product.trash');
     Route::put('/restore/{id}', [ProductController::class, 'restore'])->name('product.restore');
     Route::delete('/forcedelete/{id}', [ProductController::class, 'forcedelete'])->name('product.forcedelete');
+    Route::get('/exportExcel', [ProductController::class, 'exportExcel'])->name('products.exportExcel');
 });
-Route::resource('products',ProductController::class);
+Route::resource('products', ProductController::class);
 
 Route::group(['prefix' => 'groups'], function () {
     Route::get('/', [GroupController::class, 'index'])->name('group.index');
@@ -59,11 +59,11 @@ Route::prefix('customers')->group(function () {
     // Route::put('/restore/{id}', [ProductController::class, 'restore'])->name('product.restore');
     // Route::delete('/forcedelete/{id}', [ProductController::class, 'forcedelete'])->name('product.forcedelete');
 });
-Route::resource('customers',CustomerController::class);
+Route::resource('customers', CustomerController::class);
 
 //  user
 Route::prefix('users')->group(function () {
     Route::get('GetDistricts', [UserController::class, 'GetDistricts'])->name('user.GetDistricts');
     Route::get('getWards', [UserController::class, 'getWards'])->name('user.getWards');
 });
-Route::resource('users',UserController::class);
+Route::resource('users', UserController::class);

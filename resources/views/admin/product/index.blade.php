@@ -12,7 +12,7 @@
                         </h2>
                         <br>
                         <a class="btn btn-primary" href="{{ route('products.create') }}"> Thêm Sản Phẩm </a>
-                        <a class="btn btn-info" href="#"> Xuất file exel </a>
+                        <a class="btn btn-info" href="{{ route('products.exportExcel') }}"> Xuất file exel </a>
                         <a class="btn btn-warning" href="#"> Tìm chi tiết </a>
                         <table class="table" style="text-align: center">
                             <thead>
