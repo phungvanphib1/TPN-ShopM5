@@ -69,6 +69,8 @@
                                 name="Trường bắt buộc">*</abbr></label>
                         <select name="gender" id="" class="form-control">
                             <option value="{{ $users->gender }}">{{ $users->gender }}</option>
+
+
                             @if ($users->gender !== "Nam")
                             <option value="Nam">Nam</option>
                             @endif
@@ -78,6 +80,7 @@
                             @if ($users->gender !== "Khác")
                             <option value="Khác">Khác</option>
                             @endif
+
                         </select>
                         @if ('gender')
                             <p style="color:red">{{ $errors->first('gender') }}</p>

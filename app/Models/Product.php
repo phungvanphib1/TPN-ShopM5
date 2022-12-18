@@ -25,4 +25,29 @@ class Product extends Model
         return $this->hasMany(order_detail::class, 'product_id','id');
     }
 
+
+    public function scopeNameCate($query, $request)
+    {
+        if ($request->has('category_id')) {
+            return $query->whereHas('category', function ($query) use ($request) {
+                $query->where('category_id', $request->category_id);
+            });
+        }
+        return $query;
+    }
+    public function scopeFilterPrice($query, array $filters)
+    {
+        if (isset($filters['startPrice']) && isset($filters['endPrice'])) {
+            $query->whereBetween('price', [$filters['startPrice'], $filters['endPrice']]);
+        }
+        return $query;
+    }
+    public function scopefilterDate($query, array $date_to_date)
+    {
+        if (isset($date_to_date['start_date']) && isset($date_to_date['end_date'])) {
+            $query->whereBetween('created_at', [$date_to_date['start_date'], $date_to_date['end_date']]);
+        }
+        return $query;
+    }
+
 }
