@@ -1,14 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\admin\DashboarController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\CustomerController;
 use App\Http\Controllers\admin\ProductController;
-
 use App\Http\Controllers\admin\GroupController;
-
 use App\Http\Controllers\admin\UserController;
-
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +20,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.dashboar');
-})->name('dashboard.admin');
+
+Route::get('/', [DashboarController::class, 'index'])->name('dashboard.admin');
 
 Route::group(['prefix' => 'categories'], function () {
     Route::get('/', [CategoryController::class, 'index'])->name('category.index');
