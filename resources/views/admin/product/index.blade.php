@@ -1,20 +1,21 @@
 @extends('admin.layout.master')
 @section('content')
-    <section class="section">
-        <div class="row">
-            <div class="col-lg-12">
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div  class="card-body">
+                    <br>
+                    <h2 class="offset-4">
+                        Sản Phẩm
+                    </h2>
+                    <br>
 
-                <div class="card">
-                    <div class="card-body">
-                        <br>
-                        <h2 class="offset-4">
-                            Sản Phẩm
-                        </h2>
-                        <br>
-                        <a class="btn btn-primary" href="{{ route('products.create') }}"> Thêm Sản Phẩm </a>
-                        <a class="btn btn-info" href="{{ route('products.exportExcel') }}"> Xuất file exel </a>
-                        <a class="btn btn-warning" href="#"> Tìm chi tiết </a>
-                        <table class="table" style="text-align: center">
+                    <a class="btn btn-primary" href="{{ route('products.create') }}"> Thêm Sản Phẩm </a>
+                    <a onclick="return confirm('Bạn có muốn tiếp tục điều này hay không?')" class="btn btn-info" href="{{ route('products.exportExcel') }}"> Xuất file exel </a>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#searchModal">Tìm chi tiết</button>
+                    @include('admin.product.advanceSearch')
+                        <table  class="table" style="text-align: center">
                             <thead>
                                 <tr>
                                     <th scope="col">STT</th>
