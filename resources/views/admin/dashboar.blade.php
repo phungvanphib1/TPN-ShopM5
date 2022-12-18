@@ -9,6 +9,19 @@
             </ol>
         </nav>
     </div>
+    {{-- ---------------- --}}
+    @php
+        $totalAdmin = 0;
+    @endphp
+
+    @foreach ($users as $item)
+        @if ($item->groups->name == 'Supper Admin')
+            @php $totalAdmin = $totalAdmin + 1 @endphp
+        @endif
+    @endforeach
+
+    {{-- ---------------- --}}
+
     <section class="section dashboard">
         <div class="row">
             <!-- Left side columns -->
@@ -74,7 +87,7 @@
                                         <i class="bi bi-people"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>1244</h6>
+                                        <h6>264{{ $totalCustomer }}</h6>
                                         <span class="text-success small pt-1 fw-bold">8%</span><span
                                             class="text-muted small pt-2 ps-1">Đang tăng</span>
                                         {{-- <span class="text-danger small pt-1 fw-bold">12%</span>  --}}
@@ -99,8 +112,8 @@
                                         <i class="bi bi-person-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>{{$totalCustomer}}</h6>
-                                        <span class="text-success small pt-1 fw-bold">1</span> <span
+                                        <h6>{{ $totalUser }}</h6>
+                                        <span class="text-success small pt-1 fw-bold">{{ $totalAdmin }}</span> <span
                                             class="text-muted small pt-2 ps-1">SuperAdim</span>
                                     </div>
                                 </div>
