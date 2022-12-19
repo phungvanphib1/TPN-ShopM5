@@ -21,8 +21,7 @@
                 <div class="col-sm-3">
                     <div class="gallery-grid">
                         <br>
-                        <a class="example-image-link" href="{{ asset($users->image)  }}"
-                            data-lightbox="example-set"
+                        <a class="example-image-link" href="{{ asset($users->image) }}" data-lightbox="example-set"
                             data-title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae cursus ligula">
                             <img src="{{ asset($users->image) }}" id="avtshow">
                             <div class="captn">

@@ -21,9 +21,9 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
     public function all($request)
     {
-        $key                    = $request->key ;
-        $id                     = $request->id ;
-        $name                   = $request->name ;
+        $key                    = $request->key;
+        $id                     = $request->id;
+        $name                   = $request->name;
         $products = $this->model->select('*');
 
         if ($name) {
@@ -44,8 +44,8 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
         if (!empty($request->category_id)) {
             $products->NameCate($request)
-            ->filterPrice(request(['startPrice', 'endPrice']))
-            ->filterDate(request(['start_date', 'end_date']));
+                ->filterPrice(request(['startPrice', 'endPrice']))
+                ->filterDate(request(['start_date', 'end_date']));
         }
 
         $products->filterPrice(request(['startPrice', 'endPrice']));
@@ -59,41 +59,41 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
         // dd($data);
         // try {
-            //create product
-            $products = $this->model;
-            $products->name = $data['name'];
-            $products->price = $data['price'];
-            $products->quantity = $data['quantity'];
-            $products->description = $data['description'];
-            $products->category_id = $data['category_id'];
-            $products->view_count = 1;
+        //create product
+        $products = $this->model;
+        $products->name = $data['name'];
+        $products->price = $data['price'];
+        $products->quantity = $data['quantity'];
+        $products->description = $data['description'];
+        $products->category_id = $data['category_id'];
+        $products->view_count = 1;
 
 
 
-            // $products->created_by = Auth::user()->id;
-            if ($data['image']) {
-                $file = $data['image'];
-                $filenameWithExt = $file->getClientOriginalName();
-                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                $extension = $file->getClientOriginalExtension();
-                $fileNameToStore = $filename . '_' . date('mdYHis') . uniqid() . '.' . $extension;
-                $path = 'storage/' . $file->store('/images', 'public');
-                $products->image = $path;
+        // $products->created_by = Auth::user()->id;
+        if ($data['image']) {
+            $file = $data['image'];
+            $filenameWithExt = $file->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $file->getClientOriginalExtension();
+            $fileNameToStore = $filename . '_' . date('mdYHis') . uniqid() . '.' . $extension;
+            $path = 'storage/' . $file->store('/images', 'public');
+            $products->image = $path;
+        }
+        $products->save();
+        if ($data['file_names']) {
+            foreach ($data['file_names'] as $file_detail) {
+                // File::delete($product->file_names()->file_name);
+                $detail_path = 'storage/' . $file_detail->store('/images', 'public');
+                $products->image_products()->saveMany([
+                    new Image_product([
+                        'product_id' => $products->id,
+                        'image' => $detail_path,
+                    ]),
+                ]);
             }
-            $products->save();
-            if ($data['file_names']) {
-                foreach ($data['file_names'] as $file_detail) {
-                    // File::delete($product->file_names()->file_name);
-                    $detail_path = 'storage/' . $file_detail->store('/images', 'public');
-                    $products->image_products()->saveMany([
-                        new Image_product([
-                            'product_id' => $products->id,
-                            'image' => $detail_path,
-                        ]),
-                    ]);
-                }
-            }
-            return true;
+        }
+        return true;
         // } catch (\Exception $e) {
         //     Log::error($e->getMessage());
         //     return false;
@@ -133,8 +133,8 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             //create product_images
             if ($data['file_names']) {
                 $items = Image_product::where('product_id', '=', $products->id)->get();
-                foreach($items as $item){
-                    $im = 'public/images/product/'.$item->image;
+                foreach ($items as $item) {
+                    $im = 'public/images/product/' . $item->image;
                     Storage::delete($im);
                 }
                 Image_product::where('product_id', '=', $products->id)->delete();
@@ -178,5 +178,4 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         $categories->forceDelete();
         return $categories;
     }
-
 }

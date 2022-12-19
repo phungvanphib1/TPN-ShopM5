@@ -24,7 +24,17 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $orders = $this->orderService->all($request);
-        return view('admin.order.index', compact('orders'));
+        $orderWait = $this->orderService->orderWait();
+        $orderBrowser = $this->orderService->orderBrowser();
+        $orderCancel = $this->orderService->orderCancel();
+
+        $params = [
+            'orders' => $orders,
+            'orderWait' => $orderWait,
+            'orderBrowser' => $orderBrowser,
+            'orderCancel' => $orderCancel
+        ];
+        return view('admin.order.index', $params);
     }
     public function show($id)
     {
@@ -36,9 +46,9 @@ class OrderController extends Controller
         ];
         return view('admin.order.show', $params);
     }
-    public function update(Request $request ,$id)
+    public function update(Request $request, $id)
     {
-       
+
         $order = Order::find($id);
         $order->status = $request->status;
         $notification = [
