@@ -30,6 +30,34 @@ class Oder_detailSeeder extends Seeder
                 'quantity' => 3,
                 'price' => 500000,
             ],
+            [
+                'id' =>3,
+                'product_id' => 2,
+                'order_id' => 3,
+                'quantity' => 3,
+                'price' => 500000,
+            ],
+            [
+                'id' =>4,
+                'product_id' => 2,
+                'order_id' => 4,
+                'quantity' => 3,
+                'price' => 500000,
+            ],
+            [
+                'id' =>5,
+                'product_id' => 2,
+                'order_id' => 5,
+                'quantity' => 3,
+                'price' => 500000,
+            ],
+            [
+                'id' =>6,
+                'product_id' => 3,
+                'order_id' => 6,
+                'quantity' => 3,
+                'price' => 500000,
+            ],
         ]);
     }
 }
