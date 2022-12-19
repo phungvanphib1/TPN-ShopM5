@@ -14,7 +14,7 @@
                         <a class="btn btn-warning" href="#"> Tìm chi tiết </a>
                         <div class="col-sm-12">
                             <ul class="nav nav-tabs nav-tabs-bordered">
-                                <li class="nav-item offset-8">
+                                <li class="nav-item offset-7">
                                     <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#orderall">Tất
                                         Cả</button>
                                 </li>
@@ -227,4 +227,5 @@
                 </div>
             </div>
         </div>
+    </section>
     @endsection

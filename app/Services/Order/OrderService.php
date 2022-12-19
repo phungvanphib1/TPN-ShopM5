@@ -17,6 +17,9 @@ class OrderService extends BaseService implements OrderServiceInterface
     {
         return $this->repository->all($request);
     }
+    public function topProduct(){
+        return $this->repository->orderBrowser();
+    }
     public function orderBrowser()
     {
         return $this->repository->orderBrowser();
