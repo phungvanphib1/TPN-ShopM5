@@ -8,22 +8,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Group extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
     protected $table = 'groups';
     protected $fillable = ['name'];
     function users()
     {
         return $this->hasMany(User::class);
     }
-    function roles()
+    public function roles()
     {
-        return $this->belongsToMany(Role::class,'role_group');
+        return $this->belongsToMany(Role::class, 'group_role', 'group_id', 'role_id');
     }
-    // public function scopeSearch($query)
-    // {
-    //     if ($key = request()->key) {
-    //         $query = $query->where('name', 'like', '%' . $key . '%');
-    //     }
-    //     return $query;
-    // }
+   
 }

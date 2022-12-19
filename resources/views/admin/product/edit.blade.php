@@ -98,7 +98,7 @@
                             <br>
                             <div class="row mb-3">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Thêm Vào</button>
+                                    <button type="submit" class="btn btn-primary">Cập nhật</button>
                                     <a href="{{ route('products.index') }}" class="btn btn-danger">Hủy</a>
                                 </div>
                             </div>

@@ -25,14 +25,18 @@
                                     <tr>
                                         <th scope="row">{{ ++$key }}</th>
                                         <td>{{ $group->name }}</td>
-                                        <td>#</td>
+                                        <<td>{{ count($group->users) }} Người</td>
                                         <td>
                                             <form action="{{ route('group.restore', $group->id) }}" method="POST">
                                                 @csrf
                                                 @method('put')
                                                 <button type="submit" class="btn btn-info">Khôi Phục</button>
+                                                @if (count($group->users) == 0 )
                                                 <a data-href="{{ route('group.forcedelete', $group->id) }}"
                                                     id="{{ $group->id }}" class="btn btn-danger sm deleteIcon">Xóa</a>
+                                                @else
+                                                    <button type="button" class="btn btn-danger" disabled>Xóa</button>
+                                                @endif
                                             </form>
                                         </td>
                                     </tr>

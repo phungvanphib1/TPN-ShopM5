@@ -21,28 +21,37 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
     public function all($request)
     {
-        $key                    = $request->key ?? '';
-        $id                     = $request->id ?? '';
-        $name                   = $request->name ?? '';
-        $status                   = $request->status ?? '';
-        // thực hiện query
-        $query = Product::select('*');
-        $query->orderBy('id', 'DESC');
+        $key                    = $request->key ;
+        $id                     = $request->id ;
+        $name                   = $request->name ;
+        $products = $this->model->select('*');
+
         if ($name) {
-            $query->where('name', 'LIKE', '%' . $name . '%');
-        }
-        if ($status) {
-            $query->where('status', 'LIKE', '%' . $status . '%');
-        }
-        if ($id) {
-            $query->where('id', $id);
+            $products->where('name', 'LIKE', '%' . $name . '%');
         }
         if ($key) {
-            $query->orWhere('id', $key);
-            $query->orWhere('name', 'LIKE', '%' . $key . '%');
+            $products->orWhere('id', $key);
+            $products->orWhere('name', 'LIKE', '%' . $key . '%');
         }
-        //Phân trang
-        return $query->paginate(5);
+        if ($id) {
+            $products->where('id', $id);
+        }
+
+        if (!empty($request->search)) {
+            $search = $request->search;
+            $products = $products->Search($search);
+        }
+
+        if (!empty($request->category_id)) {
+            $products->NameCate($request)
+            ->filterPrice(request(['startPrice', 'endPrice']))
+            ->filterDate(request(['start_date', 'end_date']));
+        }
+
+        $products->filterPrice(request(['startPrice', 'endPrice']));
+        $products->filterDate(request(['start_date', 'end_date']));
+
+        return $products->orderBy('id', 'DESC')->paginate(5);
     }
 
     public function create($data)

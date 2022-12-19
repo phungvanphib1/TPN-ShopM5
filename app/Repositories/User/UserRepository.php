@@ -37,11 +37,11 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         if ($id) {
             $query->where('id', $id);
         }
-        // if ($key) {
-        //     $query->orWhere('id', $key);
-        //     $query->orWhere('name', 'LIKE', '%' . $key . '%');
-        //     $query->orWhere('email', 'LIKE', '%' . $key . '%');
-        // }
+        if ($key) {
+            $query->orWhere('id', $key);
+            $query->orWhere('name', 'LIKE', '%' . $key . '%');
+            $query->orWhere('email', 'LIKE', '%' . $key . '%');
+        }
         //Phân trang
         $users = $query->orderBy('id', 'DESC')->paginate(5);
         $params = [

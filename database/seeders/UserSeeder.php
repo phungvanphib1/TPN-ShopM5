@@ -61,6 +61,21 @@ class UserSeeder extends Seeder
         $user->gender = 'Nam';
         $user->save();
 
+        $user = new User();
+        $user->name = 'SuperAdmin';
+        $user->email = 'admin@gmail.com';
+        $user->password = Hash::make('123456');
+        $user->birthday = '2003/06/27';
+        $user->image = 'https://cdn.shopify.com/s/files/1/0354/5169/9333/products/Ao-hoodie-1-Black-12-ZiZoou-Store.jpg?v=1670341647';
+        $user->phone = '0916663237';
+        $user->address = 'Quảng Trị';
+        $user->group_id = '1';
+        $user->province_id  = '1';
+        $user->district_id  = '2';
+        $user->ward_id  = '3';
+        $user->gender = 'Nam';
+        $user->save();
+
 
     }
 }
