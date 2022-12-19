@@ -9,6 +9,7 @@
             </ol>
         </nav>
     </div>
+
     {{-- ---------------- --}}
     @php
         $totalAdmin = 0;
@@ -45,7 +46,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <!-- End Sales Card -->
@@ -87,7 +87,9 @@
                                         <i class="bi bi-people"></i>
                                     </div>
                                     <div class="ps-3">
+
                                         <h6>264{{ $totalCustomer }}</h6>
+
                                         <span class="text-success small pt-1 fw-bold">8%</span><span
                                             class="text-muted small pt-2 ps-1">Đang tăng</span>
                                         {{-- <span class="text-danger small pt-1 fw-bold">12%</span>  --}}
@@ -112,14 +114,18 @@
                                         <i class="bi bi-person-fill"></i>
                                     </div>
                                     <div class="ps-3">
+
                                         <h6>{{ $totalUser }}</h6>
                                         <span class="text-success small pt-1 fw-bold">{{ $totalAdmin }}</span> <span
+
                                             class="text-muted small pt-2 ps-1">SuperAdim</span>
                                     </div>
                                 </div>
                             </div>
 
+                            </div>
                         </div>
+
                     </div>
                     <!-- End Customers Card -->
                     <!-- Reports -->
@@ -159,6 +165,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <!-- End Top Selling -->
                         <!-- Recent Sales -->
                         <div class="col-12">
@@ -202,7 +209,9 @@
                                             <tr>
                                                 <th scope="row"><a href="#">#2644</a></th>
                                                 <td>Angus Grady</td>
+
                                                 <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
+
                                                 <td>$67</td>
                                                 <td><span class="badge bg-danger">Rejected</span></td>
                                             </tr>
@@ -218,6 +227,7 @@
                                     </table>
                                 </div>
                             </div>
+
                         </div>
                         <!-- End Recent Sales -->
                     </div>
@@ -283,6 +293,7 @@
                         </div>
                         <!-- End Website Traffic -->
                     </div>
+
                     <!-- End Right side columns -->
                 </div>
     </section>

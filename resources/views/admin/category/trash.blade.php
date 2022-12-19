@@ -36,13 +36,24 @@
                                             <form action="{{ route('category.restore', $category->id) }}" method="POST">
                                                 @csrf
                                                 @method('put')
-                                                <button type="submit" class="btn btn-info">Khôi Phục</button>
-                                                @if (count($category->products) == 0)
-                                                <a data-href="{{ route('category.forcedelete', $category->id) }}"
-                                                    id="{{ $category->id }}" class="btn btn-danger sm deleteIcon">Xóa</a>
+
+                                                @if (Auth::user()->hasPermission('Category_restore'))
+                                                    <button type="submit" class="btn btn-info">Khôi Phục</button>
+                                                @else
+                                                    <button type="button" class="btn btn-info" disabled>Khôi Phục</button>
+                                                @endif
+                                                {{-- @if (count($category->products) !== 0) --}}
+                                                @if (Auth::user()->hasPermission('Category_forceDelete'))
+                                                    <a data-href="{{ route('category.forcedelete', $category->id) }}"
+                                                        id="{{ $category->id }}"
+                                                        class="btn btn-danger sm deleteIcon">Xóa</a>
                                                 @else
                                                     <button type="button" class="btn btn-danger" disabled>Xóa</button>
                                                 @endif
+                                                {{-- @else
+                                                    <span style="color: red" ><button type="button" class="btn btn-danger" disabled>Xóa</button> có sản phẩm đi kèm</span>
+                                                @endif --}}
+
                                             </form>
                                         </td>
                                     </tr>

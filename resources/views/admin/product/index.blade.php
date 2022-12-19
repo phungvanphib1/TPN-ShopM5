@@ -11,11 +11,29 @@
                     </h2>
                     <br>
 
+
+                <div class="card">
+                    <div class="card-body">
+                        <br>
+                        <h2 class="offset-4">
+                            Sản Phẩm
+                        </h2>
+                        <br>
+                        @if (Auth::user()->hasPermission('Product_create'))
+                            <a class="btn btn-primary" href="{{ route('products.create') }}"> Thêm Sản Phẩm </a>
+                        @else
+                            <button type="button" class="btn btn-primary" disabled>Thêm Sản Phẩm</button>
+                        @endif
+                        <a class="btn btn-info" href="#"> Xuất file exel </a>
+                        <a class="btn btn-warning" href="#"> Tìm chi tiết </a>
+                        <table class="table" style="text-align: center">
+
                     <a class="btn btn-primary" href="{{ route('products.create') }}"> Thêm Sản Phẩm </a>
                     <a onclick="return confirm('Bạn có muốn tiếp tục điều này hay không?')" class="btn btn-info" href="{{ route('products.exportExcel') }}"> Xuất file exel </a>
                     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#searchModal">Tìm chi tiết</button>
                     @include('admin.product.advanceSearch')
                         <table  class="table" style="text-align: center">
+
                             <thead>
                                 <tr>
                                     <th scope="col">STT</th>
@@ -49,11 +67,19 @@
                                             <form action="{{ route('products.destroy', $product->id) }}" method="post">
                                                 @method('DELETE')
                                                 @csrf
-                                                <a href="{{ route('products.edit', $product->id) }}"
-                                                    class='btn btn-warning'> Sửa </a>
-                                                <button
-                                                    onclick="return confirm('Bạn có chắc muốn đưa danh mục này vào thùng rác không?');"
-                                                    class='btn btn-danger' type="submit">Xóa</button>
+                                                @if (Auth::user()->hasPermission('Product_update'))
+                                                    <a href="{{ route('products.edit', $product->id) }}"
+                                                        class='btn btn-warning'> Sửa </a>
+                                                @else
+                                                    <button type="button" class="btn btn-warning" disabled>Sửa</button>
+                                                @endif
+                                                @if (Auth::user()->hasPermission('Product_delete'))
+                                                    <button
+                                                        onclick="return confirm('Bạn có chắc muốn đưa danh mục này vào thùng rác không?');"
+                                                        class='btn btn-danger' type="submit">Xóa</button>
+                                                @else
+                                                    <button type="button" class="btn btn-danger" disabled>Xóa</button>
+                                                @endif
                                             </form>
                                         </td>
                                     </tr>

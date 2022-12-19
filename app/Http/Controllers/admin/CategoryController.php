@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\StoreCategoryRequest;
 use App\Http\Requests\Category\UpdateCategoryRequest;
+use App\Models\Category;
 use App\Services\Category\CategoryServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -24,6 +25,7 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('viewAny', Category::class);
         $categories = $this->categoryService->all($request);
         return view('admin.category.index', compact('categories'));
     }
@@ -35,6 +37,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Category::class);
         return view('admin.category.add');
     }
 
@@ -48,15 +51,15 @@ class CategoryController extends Controller
     {
         $data = $request->all();
         try {
-        $this->categoryService->create($data);
-        $notification = [
-            'message' => 'Thêm loại sản phẩm thành công!',
-            'alert-type' => 'success'
-        ];
-        return redirect()->route('category.index')->with($notification);
+            $this->categoryService->create($data);
+            $notification = [
+                'message' => 'Thêm loại sản phẩm thành công!',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('category.index')->with($notification);
         } catch (\Exception $e) {
             Session::flash('error', config('define.store.error'));
-            Log::error('message:'. $e->getMessage());
+            Log::error('message:' . $e->getMessage());
             $notification = [
                 'message' => 'có lôi say ra!',
                 'alert-type' => 'error'
@@ -84,7 +87,8 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = $this->categoryService->find($id);
-        return view('admin.category.edit' , compact('category')) ;
+        $this->authorize('update', Category::class);
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -97,8 +101,8 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, $id)
     {
         $data = $request->all();
-        try{
-            $this->categoryService->update( $id, $data);
+        try {
+            $this->categoryService->update($id, $data);
             $notification = [
                 'message' => 'Cập nhật thành công!',
                 'alert-type' => 'success'
@@ -106,7 +110,7 @@ class CategoryController extends Controller
             return redirect()->route('category.index')->with($notification);
         } catch (\Exception $e) {
             Session::flash('error', config('define.update.error'));
-            Log::error('message:'. $e->getMessage());
+            Log::error('message:' . $e->getMessage());
             $notification = [
                 'message' => 'có lôi say ra!',
                 'alert-type' => 'error'
@@ -123,7 +127,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        try{
+        $this->authorize('delete', Category::class);
+        try {
             $category = $this->categoryService->delete($id);
             $notification = [
                 'message' => 'Đã chuyển vào thùng rác!',
@@ -132,23 +137,25 @@ class CategoryController extends Controller
             return redirect()->route('category.index')->with($notification);
         } catch (\Exception $e) {
             Session::flash('error', config('define.destroy.error'));
-            Log::error('message:'. $e->getMessage());
+            Log::error('message:' . $e->getMessage());
             $notification = [
                 'message' => 'có lôi say ra!',
                 'alert-type' => 'error'
             ];
             return redirect()->route('category.index')->with($notification);
         }
-
     }
 
-    public function trash(){
+    public function trash()
+    {
         $categories = $this->categoryService->getTrash();
         return view('admin.category.trash', compact('categories'));
     }
 
-    public function restore($id){
-        try{
+    public function restore($id)
+    {
+        $this->authorize('restore', Category::class);
+        try {
             $this->categoryService->restore($id);
             $notification = [
                 'message' => 'Khôi phục thành công!',
@@ -157,7 +164,7 @@ class CategoryController extends Controller
             return redirect()->route('category.trash')->with($notification);
         } catch (\Exception $e) {
             Session::flash('error', config('define.restore.error'));
-            Log::error('message:'. $e->getMessage());
+            Log::error('message:' . $e->getMessage());
             $notification = [
                 'message' => 'có lôi say ra!',
                 'alert-type' => 'error'
@@ -166,8 +173,10 @@ class CategoryController extends Controller
         }
     }
 
-    public function forcedelete($id){
-        try{
+    public function forcedelete($id)
+    {
+        $this->authorize('forceDelete', Category::class);
+        try {
             $this->categoryService->forceDelete($id);
             $notification = [
                 'message' => 'Loại sản phẩm đã bị xóa!',
@@ -176,7 +185,7 @@ class CategoryController extends Controller
             return redirect()->route('category.trash')->with($notification);
         } catch (\Exception $e) {
             Session::flash('error', config('define.forceDelete.error'));
-            Log::error('message:'. $e->getMessage());
+            Log::error('message:' . $e->getMessage());
             $notification = [
                 'message' => 'có lôi say ra!',
                 'alert-type' => 'error'

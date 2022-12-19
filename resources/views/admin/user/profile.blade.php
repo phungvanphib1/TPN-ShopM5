@@ -49,6 +49,7 @@
                         </a>
                     </div>
                 </div>
+
                 <div class="col-sm-9">
                     <ul class="nav nav-tabs nav-tabs-bordered">
                         <li class="nav-item">
@@ -67,7 +68,6 @@
                                 data-bs-target="#profile-change-password-by-mail">Quên mật khẩu</button>
                         </li>
                     </ul>
-
 
                     <div class="tab-content pt-2">
                         <div class="tab-pane fade show active profile-overview" id="profile-overview">
