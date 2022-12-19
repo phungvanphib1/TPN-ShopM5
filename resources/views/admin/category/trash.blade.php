@@ -27,12 +27,16 @@
                                         <td></td>
                                         <th scope="row">{{ ++$key }}</th>
                                         <td>{{ $category->name }}</td>
-                                        <td>#</td>
-                                        {{-- <td>{{ count($category->products) }}</td> --}}
+                                        <td>{{ count($category->products) }} sản phẩm
+                                        @if (count($category->products) !== 0)
+                                        <span style="color: red"> đi kèm!</span>
+                                        @endif
+                                    </td>
                                         <td>
                                             <form action="{{ route('category.restore', $category->id) }}" method="POST">
                                                 @csrf
                                                 @method('put')
+
                                                 @if (Auth::user()->hasPermission('Category_restore'))
                                                     <button type="submit" class="btn btn-info">Khôi Phục</button>
                                                 @else
@@ -49,10 +53,8 @@
                                                 {{-- @else
                                                     <span style="color: red" ><button type="button" class="btn btn-danger" disabled>Xóa</button> có sản phẩm đi kèm</span>
                                                 @endif --}}
+
                                             </form>
-
-
-
                                         </td>
                                     </tr>
                                 @endforeach

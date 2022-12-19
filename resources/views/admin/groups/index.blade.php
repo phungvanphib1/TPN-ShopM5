@@ -19,7 +19,9 @@
                                 <tr>
                                     <th scope="col">STT</th>
                                     <th scope="col">Tên Nhóm Quyền</th>
-                                    <th>Người đảm nhận</th>
+
+                                    <th scope="col">Hiện có</th>
+
                                     <th scope="col">Tùy Chọn</th>
                                 </tr>
                             </thead>
@@ -28,7 +30,9 @@
                                     <tr>
                                         <th scope="row">{{ ++$key }}</th>
                                         <td>{{ $group->name }}</td>
-                                        <td>Hiện có {{ count($group->users) }} người</td>
+
+                                        <td>{{ count($group->users) }} Người</td>
+
                                         <td>
                                             <form action="{{ route('group.destroy', $group->id) }}" method="post">
                                                 @method('DELETE')

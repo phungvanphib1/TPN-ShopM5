@@ -12,6 +12,8 @@ use App\Services\Product\ProductServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use App\Exports\ProductsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
@@ -190,6 +192,9 @@ class ProductController extends Controller
             return redirect()->route('product.trash')->with($notification);
         }
     }
+    public function exportExcel(){
+        return Excel::download(new ProductsExport, 'products.xlsx');
+    }
 
     public function forcedelete($id)
     {
@@ -211,4 +216,5 @@ class ProductController extends Controller
             return redirect()->route('product.trash')->with($notification);
         }
     }
+
 }

@@ -53,15 +53,15 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Group::class, 'group_id', 'id');
     }
-    public function scopeSearch($query, $term)
-    {
-        if ($term) {
-            $query->where('name', 'like', '%' . $term . '%')
-                ->orWhere('group_id', 'like', '%' . $term . '%')
-                ->orWhere('id', 'like', '%' . $term . '%');
-        }
-        return $query;
-    }
+    // public function scopeSearch($query, $key)
+    // {
+    //     if ($key) {
+    //         $query->where('name', 'like', '%' . $key . '%')
+    //             ->orWhere('group_id', 'like', '%' . $key . '%')
+    //             ->orWhere('id', 'like', '%' . $key . '%');
+    //     }
+    //     return $query;
+    // }
     public function products()
     {
         return $this->hasMany(Product::class, 'user_id_ad', 'id');

@@ -28,8 +28,6 @@
                                         <th scope="row">{{ ++$key }}</th>
                                         <td>{{ $product->name }}</td>
                                         <td>{{ number_format($product->price) }}</td>
-                                        {{-- <td>{{ $product->category->name }}</td> --}}
-
                                         @if ($product->category)
                                             <td>{{ $product->category->name }}</td>
                                         @else
@@ -41,7 +39,6 @@
                                             <img style="width:80px; height:100px" src="{{ asset($product->image) }}">
                                         </td>
                                         <td>
-
                                             <form action="{{ route('product.restore', $product->id) }}" method="POST">
                                                 @csrf
                                                 @method('put')
@@ -58,20 +55,6 @@
                                                     <button type="button" class="btn btn-danger" disabled>Xóa</button>
                                                 @endif
                                             </form>
-
-                                            {{-- <form action="{{ route('product.restore', $product->id) }}" method="POST">
-                                            @csrf
-                                            @method('put')
-                                        <button type="submit" onclick="return confirm('Bạn có chắc muốn khôi phục danh mục này không?');"
-                                         class ='btn btn-info'>Khôi phục</button>
-                                        </form>
-                                        <form action="{{ route('product.forcedelete', $product->id) }}" method="POST">
-                                            @csrf
-                                            @method('delete')
-                                        <button type="submit" onclick="return confirm('Bạn có chắc xóa không');"
-                                         class ='btn btn-danger'>Xóa</button>
-                                        </form> --}}
-
                                         </td>
                                     </tr>
                                 @endforeach
