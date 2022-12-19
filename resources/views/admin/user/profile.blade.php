@@ -16,57 +16,57 @@
                 </div>
                 <div class="col-md-6">
                     <div class="p-3 right-side">
-                            <table class="table table">
-                                <tbody>
-                                    <tr>
-                                        <td>Mã nhân viên</td>
-                                        <td>{{ $users->id }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tên nhân viên</td>
-                                        <td>{{ $users->name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Chức vụ</td>
-                                        <td>{{ $users->groups->name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>E-mail</td>
-                                        <td>{{ $users->email }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Số điện thoại</td>
-                                        <td>{{ $users->phone }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ngày sinh</td>
-                                        <td>{{ $users->birthday }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Giới tính</td>
-                                        <td>{{ $users->gender }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tỉnh/Thành</td>
-                                        <td>{{ $users->provinces->name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Quận/Huyện</td>
-                                        <td>{{ $users->districts->name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Phường/Xã</td>
-                                        <td>{{ $users->wards->name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Địa chỉ</td>
-                                        <td>{{ $users->address }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <table class="table table">
+                            <tbody>
+                                <tr>
+                                    <td>Mã nhân viên</td>
+                                    <td>{{ $users->id }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Tên nhân viên</td>
+                                    <td>{{ $users->name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Chức vụ</td>
+                                    <td>{{ $users->groups->name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail</td>
+                                    <td>{{ $users->email }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Số điện thoại</td>
+                                    <td>{{ $users->phone }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Ngày sinh</td>
+                                    <td>{{ $users->birthday }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Giới tính</td>
+                                    <td>{{ $users->gender }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Tỉnh/Thành</td>
+                                    <td>{{ $users->provinces->name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Quận/Huyện</td>
+                                    <td>{{ $users->districts->name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Phường/Xã</td>
+                                    <td>{{ $users->wards->name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Địa chỉ</td>
+                                    <td>{{ $users->address }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 @endsection

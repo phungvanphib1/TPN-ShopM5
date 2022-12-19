@@ -33,8 +33,8 @@ class UserController extends Controller
     }
     public function index(Request $request)
     {
-        // $this->authorize('viewAny', User::class);
         $groups = Group::get();
+        $this->authorize('viewAny', User::class);
         $users = $this->userService->all($request);
         return view('admin.user.index', compact('users', 'groups'));
     }
@@ -46,6 +46,7 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
+        $this->authorize('create', User::class);
         $groups = $this->GroupService->all($request);
         $users = $this->userService->all($request);
         $provinces = $this->userService->provinces();
@@ -98,11 +99,13 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('update', User::class);
         $users = $this->userService->find($id);
         $groups = $this->GroupService->all($id);
         $provinces = $this->userService->provinces();
         $districts = $this->userService->districts();
         $wards = $this->userService->wards();
+        $this->authorize('update', $users);
         return view('admin.user.edit', compact('groups', 'users', 'provinces', 'districts', 'wards'));
     }
 
@@ -141,6 +144,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('delete', User::class);
         try {
             DB::beginTransaction();
             $user = $this->userService->find($id);

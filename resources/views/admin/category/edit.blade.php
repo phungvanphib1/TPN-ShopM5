@@ -8,7 +8,7 @@
                     <div class="card-body">
                         <br>
                         <h2 class="offset-4">
-                           Chỉnh Sửa Loại Sản Phẩm
+                            Chỉnh Sửa Loại Sản Phẩm
                         </h2>
                         <!-- General Form Elements -->
                         <form action="{{ route('category.update', [$category->id]) }}" method="post">

@@ -45,9 +45,18 @@
                                             <form action="{{ route('product.restore', $product->id) }}" method="POST">
                                                 @csrf
                                                 @method('put')
-                                                <button type="submit" class="btn btn-info">Khôi Phục</button>
-                                                <a data-href="{{ route('product.forcedelete', $product->id) }}"
-                                                    id="{{ $product->id }}" class="btn btn-danger sm deleteIcon">Xóa</a>
+                                                @if (Auth::user()->hasPermission('Product_restore'))
+                                                    <button type="submit" class="btn btn-info">Khôi Phục</button>
+                                                @else
+                                                    <button type="button" class="btn btn-info" disabled>Khôi Phục</button>
+                                                @endif
+                                                @if (Auth::user()->hasPermission('Product_forceDelete'))
+                                                    <a data-href="{{ route('product.forcedelete', $product->id) }}"
+                                                        id="{{ $product->id }}"
+                                                        class="btn btn-danger sm deleteIcon">Xóa</a>
+                                                @else
+                                                    <button type="button" class="btn btn-danger" disabled>Xóa</button>
+                                                @endif
                                             </form>
 
                                             {{-- <form action="{{ route('product.restore', $product->id) }}" method="POST">
