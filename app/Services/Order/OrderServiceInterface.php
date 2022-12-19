@@ -9,6 +9,7 @@ interface OrderServiceInterface extends ServiceInterface
     public function orderWait();
     public function orderBrowser();
     public function orderCancel();
+    public function topProduct();
     public function restore($id);
     public function forceDelete($id);
 }

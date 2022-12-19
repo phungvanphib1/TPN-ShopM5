@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('123456');
         $user->birthday = '2004/01/01';
         $user->address = 'Quảng Trị';
-        $user->image = 'cuong.jpg';
+        $user->image = '1jCVdawgaYEAN8g7RCOxHH1mkA9IJcixSfQlmkNk.png';
         $user->phone = '0935779035';
         $user->gender = 'Nam';
         $user->group_id = '1';
@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('123456');
         $user->birthday = '2002/04/24';
         $user->address = 'Quảng Trị';
-        $user->image = 'phi.jpg';
+        $user->image = '3WNnFrspU6tCvLuBBNRHvpoP2h3o2BZNxXqkgUll.png';
         $user->phone = '0777333274';
         $user->gender = 'Nam';
         $user->group_id = '2';
@@ -51,7 +51,7 @@ class UserSeeder extends Seeder
         $user->email = 'thao@gmail.com';
         $user->password = Hash::make('123456');
         $user->birthday = '2003/06/27';
-        $user->image = 'phi.jpg';
+        $user->image = '275298848_1366445620471977_6553271644054042636_n.jpg';
         $user->phone = '0916663237';
         $user->address = 'Quảng Trị';
         $user->group_id = '2';

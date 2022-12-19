@@ -4,6 +4,7 @@ namespace App\Repositories\Order;
 
 use App\Models\Order;
 use App\Repositories\BaseRepository;
+use Illuminate\Support\Facades\DB;
 
 class OrderRepository extends BaseRepository implements OrderRepositoryInterface
 {
@@ -28,6 +29,17 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
         }
         //Phân trang
         return $query->orderBy('id', 'DESC')->paginate(5);
+    }
+    public function topProduct(){
+        $topProducts = DB::table('order_detail')
+            ->leftJoin('products', 'products.id', '=', 'order_detail.product_id')
+            ->selectRaw('products.*, sum(order_detail.quantity) totalProduct, sum(order_detail.total) totalPrice')
+            ->groupBy('order_detail.product_id')
+            ->orderBy('totalProduct', 'desc')
+            ->take(5)
+            ->get();
+        return $topProducts;
+
     }
 
     public function orderWait()

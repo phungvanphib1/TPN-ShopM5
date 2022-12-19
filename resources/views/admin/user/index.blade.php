@@ -21,7 +21,9 @@
                         @if (Auth::user()->hasPermission('User_create'))
                             <a class="btn btn-primary" href="{{ route('users.create') }}"> Đăng kí tài khoản </a>
                         @else
-                            <button type="button" class="btn btn-primary" disabled>Đăng kí tài khoản</button>
+                            <i data-bs-toggle="tooltip" data-bs-placement="top" title="Bạn không có quyền làm điều này!">
+                                <button type="button" class="btn btn-primary" disabled>Đăng kí tài khoản</button>
+                            </i>
                         @endif
                         <table class="table">
                             <thead>
