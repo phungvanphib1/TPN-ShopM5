@@ -20,14 +20,14 @@ class Oder_detailSeeder extends Seeder
                 'id' =>1,
                 'product_id' => 1,
                 'order_id' => 1,
-                'quantity' => 1,
+                'quantity' => 2,
                 'price' => 450000,
             ],
             [
                 'id' =>2,
                 'product_id' => 2,
                 'order_id' => 2,
-                'quantity' => 1,
+                'quantity' => 3,
                 'price' => 500000,
             ],
         ]);

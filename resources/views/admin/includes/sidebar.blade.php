@@ -122,6 +122,23 @@
             </li>
         </li>
          <!-- End Forms Nav -->
+         <!-- Forms Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#charts-hhh" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-layout-text-window-reverse"></i><span>Quản Lí Đơn Hàng </span><i
+                    class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <li class="nav-item">
+                <ul id="charts-hhh" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ route('orders.index') }}">
+                            <i class="bi bi-circle"></i><span>Danh Sách Đơn Hàng </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </li>
+         <!-- End Forms Nav -->
 
     </ul>
 

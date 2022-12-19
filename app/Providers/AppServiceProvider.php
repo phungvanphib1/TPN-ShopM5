@@ -19,7 +19,8 @@ use App\Services\Product\ProductServiceInterface;
 
 use App\Repositories\Group\GroupRepository;
 use App\Repositories\Group\GroupRepositoryInterface;
-
+use App\Repositories\Order\OrderRepository;
+use App\Repositories\Order\OrderRepositoryInterface;
 use App\Services\Customer\CustomerService;
 use App\Services\Customer\CustomerServiceInterface;
 
@@ -28,7 +29,8 @@ use App\Repositories\User\UserRepositoryInterface;
 
 use App\Services\Group\GroupService;
 use App\Services\Group\GroupServiceInterface;
-
+use App\Services\Order\OrderService;
+use App\Services\Order\OrderServiceInterface;
 use App\Services\User\UserService;
 use App\Services\User\UserServiceInterface;
 
@@ -64,7 +66,9 @@ class AppServiceProvider extends ServiceProvider
         // đăng ký user
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(UserServiceInterface::class, UserService::class);
-
+        // đăng ký order
+        $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
+        $this->app->bind(OrderServiceInterface::class, OrderService::class);
     }
     /**
      * Bootstrap any application services.

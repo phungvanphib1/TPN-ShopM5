@@ -5,7 +5,7 @@ use App\Http\Controllers\admin\CustomerController;
 use App\Http\Controllers\admin\ProductController;
 
 use App\Http\Controllers\admin\GroupController;
-
+use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\UserController;
 
 use Illuminate\Support\Facades\Route;
@@ -37,7 +37,6 @@ Route::group(['prefix' => 'categories'], function () {
     Route::delete('/forcedelete/{id}', [CategoryController::class, 'forcedelete'])->name('category.forcedelete');
 });
 Route::prefix('products')->group(function () {
-    Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('product.destroy');
     Route::get('/trash', [ProductController::class, 'trash'])->name('product.trash');
     Route::put('/restore/{id}', [ProductController::class, 'restore'])->name('product.restore');
     Route::delete('/forcedelete/{id}', [ProductController::class, 'forcedelete'])->name('product.forcedelete');
@@ -69,3 +68,12 @@ Route::prefix('users')->group(function () {
     Route::get('getWards', [UserController::class, 'getWards'])->name('user.getWards');
 });
 Route::resource('users',UserController::class);
+//  Order
+Route::prefix('orders')->group(function () {
+    // Route::get('orders/trash', [OrderController::class, 'getTrash'])->name('order.trash');
+    // Route::post('orders/trash/restore/{id}', [OrderController::class, 'restore'])->name('order.restore');
+    // Route::delete('orders/trash/force-delete/{id}', [OrderController::class, 'forceDelete'])->name('order.forceDelete');
+    // Route::get('searchOrders', [OrderController::class, 'searchByName'])->name('order.searchKey');
+    // Route::get('searchOrders', [OrderController::class, 'searchOrder'])->name('order.search');
+});
+Route::resource('orders', OrderController::class);
