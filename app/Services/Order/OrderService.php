@@ -5,7 +5,8 @@ namespace App\Services\Order;
 use App\Repositories\Order\OrderRepositoryInterface;
 use App\Services\BaseService;
 
-class OrderService extends BaseService implements OrderServiceInterface {
+class OrderService extends BaseService implements OrderServiceInterface
+{
 
     public $repository;
     public function __construct(OrderRepositoryInterface $orderRepository)
@@ -16,7 +17,20 @@ class OrderService extends BaseService implements OrderServiceInterface {
     {
         return $this->repository->all($request);
     }
-    public function update($id, $data){
+    public function orderBrowser()
+    {
+        return $this->repository->orderBrowser();
+    }
+    public function orderWait()
+    {
+        return $this->repository->orderWait();
+    }
+    public function orderCancel()
+    {
+        return $this->repository->orderCancel();
+    }
+    public function update($id, $data)
+    {
         return $this->repository->update($id, $data);
     }
     public function delete($id)
@@ -27,11 +41,12 @@ class OrderService extends BaseService implements OrderServiceInterface {
     {
         return $this->repository->getTrash();
     }
-    public function restore($id){
+    public function restore($id)
+    {
         return $this->repository->restore($id);
     }
-    public function forceDelete($id){
+    public function forceDelete($id)
+    {
         return $this->repository->forceDelete($id);
     }
-
 }
