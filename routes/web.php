@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\CustomerController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\GroupController;
+use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\UserController;
 
 /*
@@ -21,6 +22,7 @@ use App\Http\Controllers\admin\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 
 
@@ -74,8 +76,8 @@ Route::prefix('/')->middleware(['auth', 'prevent-back-history'])->group(function
         Route::get('getWards', [UserController::class, 'getWards'])->name('user.getWards');
     });
     Route::resource('users', UserController::class);
+    //  Order
+    Route::prefix('orders')->group(function () {});
+    Route::resource('orders', OrderController::class);
 });
-
-
-
 

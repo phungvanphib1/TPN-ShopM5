@@ -22,7 +22,8 @@ class OderSeeder extends Seeder
                 'total' => 300000,
                 'date_at' => '2022-12-25',
                 'date_ship' => '2022-12-27',
-                'note' =>'giao hàng sau 17h00'
+                'note' =>'giao hàng sau 17h00',
+                'status' =>0,
             ],
             [
                 'id' =>2,
@@ -30,7 +31,8 @@ class OderSeeder extends Seeder
                 'total' => 150000,
                 'date_at' => '2022-12-28',
                 'date_ship' => '2022-12-30',
-                'note' =>'giao hàng 24/7'
+                'note' =>'giao hàng 24/7',
+                'status' =>1,
             ],
         ]);
     }
