@@ -1,11 +1,8 @@
 <?php
-
 namespace Database\Seeders;
-
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
 class CategorySeeder extends Seeder
 {
     /**
@@ -17,14 +14,23 @@ class CategorySeeder extends Seeder
     {
         DB::table('categories')->insert([
             [
-                'name' => 'IPhone',
-
+                'name' => 'Quần',
             ],
             [
-                'name' => 'SamSung',
-
+                'name' => 'Áo',
             ],
-
+            [
+                'name' => 'Mũ',
+            ],
+            [
+                'name' => 'Dép',
+            ],
+            [
+                'name' => 'Giày',
+            ],
+            [
+                'name' => 'Phụ kiện',
+            ],
         ]);
     }
 }
