@@ -117,184 +117,181 @@
 
                                         <h6>{{ $totalUser }}</h6>
                                         <span class="text-success small pt-1 fw-bold">{{ $totalAdmin }}</span> <span
-
                                             class="text-muted small pt-2 ps-1">SuperAdim</span>
                                     </div>
                                 </div>
                             </div>
-
-                            </div>
                         </div>
-
                     </div>
-                    <!-- End Customers Card -->
-                    <!-- Reports -->
-                    <div class="col-lg-8">
-                        <div class="col-12">
-                        </div>
-                        <!-- End Reports -->
-                        <!-- Top Selling -->
-                        <div class="col-12">
-                            <div class="card top-selling overflow-auto">
-                                <div class="card-body pb-0">
-                                    <h5 class="card-title">Top bán chạy</h5>
-
-                                    <table class="table table-borderless">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Ảnh</th>
-                                                <th scope="col">Tên Sản Phẩm</th>
-                                                <th scope="col">Giá</th>
-                                                <th scope="col">Đã bán</th>
-                                                <th scope="col">Doanh Thu</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row"><a href="#"><img src="assets/img/product-1.jpg"
-                                                            alt=""></a></th>
-                                                <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa
-                                                        voluptas
-                                                        nulla</a></td>
-                                                <td>$64</td>
-                                                <td class="fw-bold">124</td>
-                                                <td>$5,828</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- End Top Selling -->
-                        <!-- Recent Sales -->
-                        <div class="col-12">
-                            <div class="card recent-sales overflow-auto">
-                                <div class="card-body">
-                                    <h5 class="card-title">Đơn hàng gần đây</h5>
-                                    <table class="table table-borderless datatable">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Loại</th>
-                                                <th scope="col">Sản Phẩm</th>
-                                                <th scope="col">Giá</th>
-                                                <th scope="col">Trạng Thái</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row"><a href="#">#2457</a></th>
-                                                <td>Brandon Jacob</td>
-                                                <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                                                <td>$64</td>
-                                                <td><span class="badge bg-success">Approved</span></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"><a href="#">#2147</a></th>
-                                                <td>Bridie Kessler</td>
-                                                <td><a href="#" class="text-primary">Blanditiis dolor omnis
-                                                        similique</a></td>
-                                                <td>$47</td>
-                                                <td><span class="badge bg-warning">Pending</span></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"><a href="#">#2049</a></th>
-                                                <td>Ashleigh Langosh</td>
-                                                <td><a href="#" class="text-primary">At recusandae consectetur</a>
-                                                </td>
-                                                <td>$147</td>
-                                                <td><span class="badge bg-success">Approved</span></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"><a href="#">#2644</a></th>
-                                                <td>Angus Grady</td>
-
-                                                <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-
-                                                <td>$67</td>
-                                                <td><span class="badge bg-danger">Rejected</span></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"><a href="#">#2644</a></th>
-                                                <td>Raheem Lehner</td>
-                                                <td><a href="#" class="text-primary">Sunt similique distinctio</a>
-                                                </td>
-                                                <td>$165</td>
-                                                <td><span class="badge bg-success">Approved</span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- End Recent Sales -->
-                    </div>
-                    <!-- End Left side columns -->
-                    <!-- Right side columns -->
-                    <div class="col-lg-4">
-                        <!-- Website Traffic -->
-                        <div class="card">
-                            <div class="card-body pb-0">
-                                <h5 class="card-title">Báo cáo lượt truy cập <span>| Tháng</span></h5>
-                                <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", () => {
-                                        echarts.init(document.querySelector("#trafficChart")).setOption({
-                                            tooltip: {
-                                                trigger: 'item'
-                                            },
-                                            legend: {
-                                                top: '5%',
-                                                left: 'center'
-                                            },
-                                            series: [{
-                                                name: 'Lượt truy cập',
-                                                type: 'pie',
-                                                radius: ['40%', '70%'],
-                                                avoidLabelOverlap: false,
-                                                label: {
-                                                    show: false,
-                                                    position: 'center'
-                                                },
-                                                emphasis: {
-                                                    label: {
-                                                        show: true,
-                                                        fontSize: '18',
-                                                        fontWeight: 'bold'
-                                                    }
-                                                },
-                                                labelLine: {
-                                                    show: false
-                                                },
-                                                data: [{
-                                                        value: 228,
-                                                        name: 'Tìm kiếm'
-                                                    },
-                                                    {
-                                                        value: 35,
-                                                        name: 'Vào thẳng'
-                                                    },
-                                                    {
-                                                        value: 94,
-                                                        name: 'Xem sản phẩm'
-                                                    },
-                                                    {
-                                                        value: 10,
-                                                        name: 'Video quảng cáo'
-                                                    }
-                                                ]
-                                            }]
-                                        });
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                        <!-- End Website Traffic -->
-                    </div>
-
-                    <!-- End Right side columns -->
                 </div>
+
+            </div>
+
+            <!-- End Customers Card -->
+            <!-- Reports -->
+            <div class="col-lg-8">
+
+                <div class="col-12">
+                    <div class="card top-selling overflow-auto">
+                        <div class="card-body pb-0">
+                            <h5 class="card-title">Top bán chạy</h5>
+
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Ảnh</th>
+                                        <th scope="col">Tên Sản Phẩm</th>
+                                        <th scope="col">Giá</th>
+                                        <th scope="col">Đã bán</th>
+                                        <th scope="col">Doanh Thu</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"><a href="#"><img src="assets/img/product-1.jpg"
+                                                    alt=""></a></th>
+                                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa
+                                                voluptas
+                                                nulla</a></td>
+                                        <td>$64</td>
+                                        <td class="fw-bold">124</td>
+                                        <td>$5,828</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End Top Selling -->
+                <!-- Recent Sales -->
+                <div class="col-12">
+                    <div class="card recent-sales overflow-auto">
+                        <div class="card-body">
+                            <h5 class="card-title">Đơn hàng gần đây</h5>
+                            <table class="table table-borderless datatable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Loại</th>
+                                        <th scope="col">Sản Phẩm</th>
+                                        <th scope="col">Giá</th>
+                                        <th scope="col">Trạng Thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"><a href="#">#2457</a></th>
+                                        <td>Brandon Jacob</td>
+                                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
+                                        <td>$64</td>
+                                        <td><span class="badge bg-success">Approved</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><a href="#">#2147</a></th>
+                                        <td>Bridie Kessler</td>
+                                        <td><a href="#" class="text-primary">Blanditiis dolor omnis
+                                                similique</a></td>
+                                        <td>$47</td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><a href="#">#2049</a></th>
+                                        <td>Ashleigh Langosh</td>
+                                        <td><a href="#" class="text-primary">At recusandae consectetur</a>
+                                        </td>
+                                        <td>$147</td>
+                                        <td><span class="badge bg-success">Approved</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><a href="#">#2644</a></th>
+                                        <td>Angus Grady</td>
+
+                                        <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
+
+                                        <td>$67</td>
+                                        <td><span class="badge bg-danger">Rejected</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><a href="#">#2644</a></th>
+                                        <td>Raheem Lehner</td>
+                                        <td><a href="#" class="text-primary">Sunt similique distinctio</a>
+                                        </td>
+                                        <td>$165</td>
+                                        <td><span class="badge bg-success">Approved</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- End Recent Sales -->
+            </div>
+            <!-- End Left side columns -->
+            <!-- Right side columns -->
+            <div class="col-lg-4">
+                <!-- Website Traffic -->
+                <div class="card">
+                    <div class="card-body pb-0">
+                        <h5 class="card-title">Báo cáo lượt truy cập <span>| Tháng</span></h5>
+                        <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", () => {
+                                echarts.init(document.querySelector("#trafficChart")).setOption({
+                                    tooltip: {
+                                        trigger: 'item'
+                                    },
+                                    legend: {
+                                        top: '5%',
+                                        left: 'center'
+                                    },
+                                    series: [{
+                                        name: 'Lượt truy cập',
+                                        type: 'pie',
+                                        radius: ['40%', '70%'],
+                                        avoidLabelOverlap: false,
+                                        label: {
+                                            show: false,
+                                            position: 'center'
+                                        },
+                                        emphasis: {
+                                            label: {
+                                                show: true,
+                                                fontSize: '18',
+                                                fontWeight: 'bold'
+                                            }
+                                        },
+                                        labelLine: {
+                                            show: false
+                                        },
+                                        data: [{
+                                                value: 228,
+                                                name: 'Tìm kiếm'
+                                            },
+                                            {
+                                                value: 35,
+                                                name: 'Vào thẳng'
+                                            },
+                                            {
+                                                value: 94,
+                                                name: 'Xem sản phẩm'
+                                            },
+                                            {
+                                                value: 10,
+                                                name: 'Video quảng cáo'
+                                            }
+                                        ]
+                                    }]
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <!-- End Website Traffic -->
+            </div>
+
+            <!-- End Right side columns -->
+        </div>
     </section>
 @endsection

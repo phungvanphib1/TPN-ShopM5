@@ -1,14 +1,14 @@
 @extends('admin.layout.master')
 @section('content')
-<style>
-     img#avt {
-width: 80px;
-height: 80px;
-border-radius:50%;
--moz-border-radius:50%;
--webkit-border-radius:50%;
-}
-</style>
+    <style>
+        img#avt {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+        }
+    </style>
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
@@ -39,37 +39,29 @@ border-radius:50%;
                                     <tr>
                                         <th scope="row">{{ ++$key }}</th>
                                         <td>
-
-                                            <a href="{{ route('users.show', $user->id) }}"><img id="avt" src="{{ asset($user->image) }}"></a>
-
+                                            @if (Auth::user()->hasPermission('User_view'))
+                                                <a href="{{ route('users.show', $user->id) }}"><img id="avt"
+                                                        src="{{ asset($user->image) }}"></a>
+                                            @else
+                                                <a href="#"><img id="avt" src="{{ asset($user->image) }}"></a>
+                                            @endif
                                         </td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->groups->name }}</td>
                                         <td>{{ $user->phone }}</td>
                                         <td>
-
-                                            <form action="{{ route('users.destroy', $user->id) }}" method="post">
-                                                @method('DELETE')
-                                                @csrf
-                                                @if (Auth::user()->hasPermission('User_update'))
-                                                    <a href="{{ route('users.edit', $user->id) }}" class='btn btn-warning'>
-                                                        Sửa
-                                                    </a>
-                                                @else
-                                                    <button type="button" class="btn btn-warning" disabled>Sửa</button>
-                                                @endif
-                                                @if (Auth::user()->hasPermission('User_delete'))
-                                                    <button
-                                                        onclick="return confirm('Bạn có chắc muốn xóa nhân viên này không?');"
-                                                        class='btn btn-danger' type="submit">Xóa</button>
-                                                @else
-                                                    <button type="button" class="btn btn-danger" disabled>Xóa</button>
-                                                @endif
-                                            </form>
-
-                                            <a data-href="{{ route('users.destroy', $user->id) }}"
-                                                id="{{ $user->id }}" class="btn btn-danger sm deleteIcon">Xóa</a>
-                                            <a href="{{ route('users.edit', $user->id) }}" class='btn btn-warning'>Sửa</a>
+                                            @if (Auth::user()->hasPermission('User_update'))
+                                                <a href="{{ route('users.edit', $user->id) }}"
+                                                    class='btn btn-warning'>Sửa</a>
+                                            @else
+                                                <button type="button" class="btn btn-warning" disabled>Sửa</button>
+                                            @endif
+                                            @if (Auth::user()->hasPermission('User_delete'))
+                                                <a data-href="{{ route('users.destroy', $user->id) }}"
+                                                    id="{{ $user->id }}" class="btn btn-danger sm deleteIcon">Xóa</a>
+                                            @else
+                                                <button type="button" class="btn btn-danger" disabled>Xóa</button>
+                                            @endif
 
                                         </td>
                                     </tr>
