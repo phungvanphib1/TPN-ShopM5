@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use App\Exports\ProductsExport;
+use App\Models\Image_product;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
@@ -94,7 +96,9 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $categories = Category::get();
+        $products = $this->productService->find($id);
+        return view('admin.product.show',compact('products','categories'));
     }
 
     /**

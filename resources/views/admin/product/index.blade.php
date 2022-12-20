@@ -48,9 +48,12 @@
                                             </td>
                                         @endif
                                         <td>
-                                            <img style="width:80px; height:100px" src="{{ asset($product->image) }}">
+                                                @if (Auth::user()->hasPermission('Product_view'))
+                                                <a href="{{ route('products.show', $product->id) }}"><img id="avt" style="width:80px; height:100px" src="{{ asset($product->image) }}"></a>
+                                                @else
+                                                <img id="avt" style="width:80px; height:100px" src="{{ asset($product->image) }}">
+                                                @endif
                                         </td>
-
                                         <td>
                                             <form action="{{ route('products.destroy', $product->id) }}" method="post">
                                                 @method('DELETE')
