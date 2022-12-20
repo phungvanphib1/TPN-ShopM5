@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StoreUserRequest;
+use App\Http\Requests\User\TakePasswordRequest;
 use App\Http\Requests\User\UpdatePasswordByMailRequets;
 use App\Http\Requests\User\UpdateUserPasswordRequest;
 use App\Http\Requests\User\UpdateUserRequest;
@@ -234,6 +235,38 @@ class UserController extends Controller
                 'sainhap' => '!',
             ];
             return back()->with($notification);
+        }
+    }
+    public function takePassword(TakePasswordRequest $request)
+    {
+        $user = DB::table('users')->where('email', $request->email)->first();
+        if(!$user){
+            $notification = [
+                'saiemail' => '!',
+            ];
+            return redirect()->route('takepassword')->with($notification);
+        }
+        if ($user->email == $request->email) {
+            try {
+                $password = Str::random(6);
+                $item = User::find($user->id);
+                $item->password = bcrypt($password);
+                $item->save();
+                $params = [
+                    'name' => $user->name,
+                    'password' => $password,
+                ];
+                Mail::send('mail.mailuserPass', compact('params'), function ($email) use ($user) {
+                    $email->subject('TPNShope');
+                    $email->to($user->email, $user->name);
+                });
+                $notification = [
+                    'okmail' => '!',
+                ];
+                return redirect()->route('login')->with($notification);
+            } catch (\Exception $e) {
+                Log::error('message: ' . $e->getMessage() . 'line: ' . $e->getLine() . 'file: ' . $e->getFile());
+            }
         }
     }
 }
