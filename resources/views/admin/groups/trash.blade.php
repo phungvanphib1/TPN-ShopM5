@@ -26,19 +26,20 @@
                                         <th scope="row">{{ ++$key }}</th>
                                         <td>{{ $group->name }}</td>
                                         <<td>{{ count($group->users) }} Người</td>
-                                        <td>
-                                            <form action="{{ route('group.restore', $group->id) }}" method="POST">
-                                                @csrf
-                                                @method('put')
-                                                <button type="submit" class="btn btn-info">Khôi Phục</button>
-                                                @if (count($group->users) == 0 )
-                                                <a data-href="{{ route('group.forcedelete', $group->id) }}"
-                                                    id="{{ $group->id }}" class="btn btn-danger sm deleteIcon">Xóa</a>
-                                                @else
-                                                    <button type="button" class="btn btn-danger" disabled>Xóa</button>
-                                                @endif
-                                            </form>
-                                        </td>
+                                            <td>
+                                                <form action="{{ route('group.restore', $group->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('put')
+                                                    <button type="submit" class="btn btn-info">Khôi Phục</button>
+                                                    @if (count($group->users) == 0)
+                                                        <a data-href="{{ route('group.forcedelete', $group->id) }}"
+                                                            id="{{ $group->id }}"
+                                                            class="btn btn-danger sm deleteIcon">Xóa</a>
+                                                    @else
+                                                        <button type="button" class="btn btn-danger" disabled>Xóa</button>
+                                                    @endif
+                                                </form>
+                                            </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -54,7 +55,7 @@
         </div>
     </section>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js'></script>
+    {{-- <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js'></script> --}}
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.10.25/datatables.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
@@ -85,14 +86,13 @@
                                 'Deleted!',
                                 'Tệp của bạn đã bị xóa!',
                                 'success'
-                                )
-                                $('.item-' + id).remove();
-                    }
-                })
-                window.location.reload();
-            }
-        })
-    });
-</script>
-
+                            )
+                            $('.item-' + id).remove();
+                        }
+                    })
+                    window.location.reload();
+                }
+            })
+        });
+    </script>
 @endsection

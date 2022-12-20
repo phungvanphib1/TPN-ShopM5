@@ -68,16 +68,20 @@ Route::prefix('/')->middleware(['auth', 'prevent-back-history'])->group(function
         Route::get('/detail/{id}', [GroupController::class, 'detail'])->name('group.detail');
         Route::put('/group_detail/{id}', [GroupController::class, 'group_detail'])->name('group.group_detail');
     });
-    Route::prefix('customers')->group(function () {});
+    Route::prefix('customers')->group(function () {
+    });
     Route::resource('customers', CustomerController::class);
 
     Route::prefix('users')->group(function () {
         Route::get('GetDistricts', [UserController::class, 'GetDistricts'])->name('user.GetDistricts');
         Route::get('getWards', [UserController::class, 'getWards'])->name('user.getWards');
+        Route::post('updatePass/{id}', [UserController::class, 'change_password'])->name('user.change_password');
+        Route::get('/editpass/{id}', [UserController::class, 'editpass'])->name('user.editpass');
+        Route::put('/adminUpdatePass/{id}', [UserController::class, 'adminUpdatePass'])->name('user.adminUpdatePass');
     });
     Route::resource('users', UserController::class);
     //  Order
-    Route::prefix('orders')->group(function () {});
+    Route::prefix('orders')->group(function () {
+    });
     Route::resource('orders', OrderController::class);
 });
-

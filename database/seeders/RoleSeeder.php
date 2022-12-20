@@ -25,5 +25,11 @@ class RoleSeeder extends Seeder
                 ]);
             }
         }
+        DB::table('roles')->insert(
+            [
+                'name' => 'User_adminupdatepass',
+                'group_name' => 'User'
+
+            ]);
     }
 }
