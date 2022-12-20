@@ -10,6 +10,7 @@ use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
@@ -102,6 +103,15 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         }
         try {
             $user->save();
+            $data = [
+                'name' => $user->name,
+                'pass' => $data->password,
+            ];
+            Mail::send('mail.mailUser', compact('data'), function ($email) use($user) {
+                $email->subject('TPN Shop');
+                $email->to($user->email, $user->name);
+            });
+
             return true;
         } catch (\Exception $e) {
             Log::error($e->getMessage());
