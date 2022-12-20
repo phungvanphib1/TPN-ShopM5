@@ -6,6 +6,7 @@
    "User_update": "[Người Dùng]  Sửa",
    "User_delete": "[Người Dùng]  Xóa",
    "User_restore": "[Người Dùng]  Khôi phục",
+   "User_adminupdatepass": "SupperAdmin có quyền đổi mật khẩu tất cả nhân viên",
    "User_forceDelete": "[Người Dùng]  Xóa Vĩnh Viễn",
    "OrderDetail": "Chi Tiết Đơn Hàng",
    "OrderDetail_viewAny": "[Chi Tiết Đơn Hàng]  Xem Danh Sách",

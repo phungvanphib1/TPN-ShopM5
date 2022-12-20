@@ -4,18 +4,25 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StoreUserRequest;
+use App\Http\Requests\User\UpdatePasswordByMailRequets;
+use App\Http\Requests\User\UpdateUserPasswordRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\District;
 use App\Models\Group;
 use App\Models\Province;
+use App\Models\User;
 use App\Models\Ward;
 use App\Services\Group\GroupServiceInterface;
 use App\Services\User\UserServiceInterface;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -177,5 +184,56 @@ class UserController extends Controller
         $district_id = $request->district_id;
         $allWards = Ward::where('district_id', $district_id)->get();
         return response()->json($allWards);
+    }
+    public function change_password(UpdateUserPasswordRequest  $request)
+    {
+        if ($request->renewpassword == $request->newpassword) {
+            if ((Hash::check($request->password, Auth::user()->password))) {
+                $item = User::find(Auth()->user()->id);
+                $item->password = bcrypt($request->newpassword);
+                $item->save();
+                Session::flash('success', config('define.update.succes'));
+                $notification = [
+                    'message' => 'Đổi mật khẩu thành công!',
+                    'alert-type' => 'success'
+                ];
+                return redirect()->route('users.index')->with($notification);
+            } else {
+                Session::flash('error', config('define.update.error'));
+                $notification = [
+                    'saipass' => '!',
+                ];
+                return back()->with($notification);
+            }
+        } else {
+            Session::flash('error', config('define.update.error'));
+            $notification = [
+                'sainhap' => '!',
+            ];
+            return back()->with($notification);
+        }
+    }
+    public function adminUpdatePass(Request $request, $id)
+    {
+        $this->authorize('adminupdatepass', User::class);
+        $user = User::find($id);
+        // dd(1123);
+        if ($request->renewpassword == $request->newpassword) {
+
+            $item = User::find($id);
+            $item->password = bcrypt($request->newpassword);
+            $item->save();
+            $notification = [
+                'message' => 'Đổi mật khẩu thành công!',
+                'alert-type' => 'success'
+            ];
+            return redirect()->route('users.index')->with($notification);
+        } else {
+            // dd($request);
+            $notification = [
+                'sainhap' => '!',
+            ];
+            return back()->with($notification);
+        }
     }
 }
