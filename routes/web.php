@@ -31,6 +31,9 @@ use App\Http\Controllers\admin\UserController;
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('postlogin');
 
+Route::get('/takepassword', function(){return view('admin.Auth.takepassword');})->name('takepassword');
+Route::post('posttakepassword', [UserController::class,'takePassword'])->name('posttakepassword');
+
 Route::prefix('/')->middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/', [DashboarController::class, 'index'])->name('dashboard.admin');
