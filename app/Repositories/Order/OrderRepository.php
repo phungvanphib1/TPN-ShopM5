@@ -37,20 +37,24 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
         if (!empty($request->search)) {
             $search = $request->search;
             $order = $order->Search($search);
-
         }
 
-        if (!empty($request->customer_id)) {
-            $order->NameCate($request)
-            ->filterDate(request(['start_date', 'end_date']));
 
+        if (!empty($request['phoneCus'])) {
+            $order->NameCus($request['phoneCus'])
+                ->filterDate(request(['start_date', 'end_date']))
+                ->filterTotal(request(['startPrice', 'endPrice']))
+                ->PhoneCus(request(['phoneCus']));
         }
 
+        $order->PhoneCus(request(['phoneCus']));
+        $order->NameCus(request(['nameCus']));
         $order->filterDate(request(['start_date', 'end_date']));
+        $order->filterTotal(request(['startPrice', 'endPrice']));
         return $order->orderBy('id', 'DESC')->get();
-
     }
-    public function topProduct(){
+    public function topProduct()
+    {
         $topProducts = DB::table('order_detail')
             ->leftJoin('products', 'products.id', '=', 'order_detail.product_id')
             ->selectRaw('products.*, sum(order_detail.quantity) totalProduct, sum(order_detail.total) totalPrice')
@@ -59,7 +63,6 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
             ->take(5)
             ->get();
         return $topProducts;
-
     }
 
     public function orderWait()
