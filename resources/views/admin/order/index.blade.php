@@ -10,8 +10,9 @@
                             Danh Sách Đơn Hàng
                         </h2>
                         <br>
-                        <a class="btn btn-info" href="#"> Xuất file exel </a>
-                        <a class="btn btn-warning" href="#"> Tìm chi tiết </a>
+                        <a onclick="return confirm('Bạn có muốn tiếp tục điều này hay không?')" class="btn btn-info" href="{{ route('orders.exportExcel') }}"> Xuất file exel </a>
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#searchModal">Tìm chi tiết</button>
+                        @include('admin.order.advanceSearch')
                         <div class="col-sm-12">
                             <ul class="nav nav-tabs nav-tabs-bordered">
                                 <li class="nav-item offset-7">
