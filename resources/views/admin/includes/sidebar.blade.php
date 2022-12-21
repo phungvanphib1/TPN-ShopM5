@@ -4,16 +4,15 @@
 
         <li class="nav-item">
             <a class="nav-link " href="{{ route('dashboard.admin') }}">
-                <i class="bi bi-grid"></i>
-                <span>Dashboard</span>
+                <i class="ri-dashboard-line"></i>
+                <span>Tổng Quan</span>
             </a>
         </li>
         <!--Components Nav -->
         @if (Auth::user()->hasPermission('Category_viewAny'))
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>Loại Sản Phẩm</span><i
-                        class="bi bi-chevron-down ms-auto"></i>
+                    <i class="ri-trello-fill"></i><span>Loại Sản Phẩm</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
@@ -37,13 +36,11 @@
             </li>
         @endif
         <!-- End Components Nav -->
-
         <!--Forms Nav -->
         @if (Auth::user()->hasPermission('Product_viewAny'))
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-layout-text-window-reverse"></i><span>Sản Phẩm</span><i
-                        class="bi bi-chevron-down ms-auto"></i>
+                    <i class="ri-product-hunt-line"></i><span>Sản Phẩm</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
@@ -67,12 +64,37 @@
             </li>
         @endif
         <!-- End Tables Nav -->
-
+        <!-- End Forms Nav -->
+        @if (Auth::user()->hasPermission('User_viewAny'))
+            <!-- Forms Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#charts-navs" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-person-lines-fill"></i><span>Quản Lí Nhân Viên </span><i
+                        class="bi bi-chevron-down ms-auto"></i>
+                </a>
+            <li class="nav-item">
+                <ul id="charts-navs" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ route('users.index') }}">
+                            <i class="bi bi-circle"></i><span>Danh Sách Nhân Viên </span>
+                        </a>
+                    </li>
+                    @if (Auth::user()->hasPermission('User_create'))
+                        <li>
+                            <a href="{{ route('users.create') }}">
+                                <i class="bi bi-circle"></i><span>Đăng Kí Tài Khoản</span>
+                            </a>
+                        </li>
+                    @endif
+                </ul>
+            </li>
+            </li>
+        @endif
         <!-- Forms Nav -->
         @if (Auth::user()->hasPermission('Group_viewAny'))
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-journal-text"></i><span>Nhóm Quyền</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-tools"></i><span>Nhóm Quyền</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
@@ -101,7 +123,7 @@
         @if (Auth::user()->hasPermission('Customer_viewAny'))
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-bar-chart"></i><span>Khách Hàng</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-people"></i><span>Khách Hàng</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
@@ -112,51 +134,25 @@
                 </ul>
             </li>
         @endif
+
         <!-- End Forms Nav -->
-        @if (Auth::user()->hasPermission('User_viewAny'))
-            <!-- Forms Nav -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#charts-navs" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-layout-text-window-reverse"></i><span>Quản Lí Nhân Viên </span><i
-                        class="bi bi-chevron-down ms-auto"></i>
-                </a>
-            <li class="nav-item">
-                <ul id="charts-navs" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="{{ route('users.index') }}">
-                            <i class="bi bi-circle"></i><span>Danh Sách Nhân Viên </span>
-                        </a>
-                    </li>
-                    @if (Auth::user()->hasPermission('User_create'))
-                        <li>
-                            <a href="{{ route('users.create') }}">
-                                <i class="bi bi-circle"></i><span>Đăng Kí Tài Khoản</span>
-                            </a>
-                        </li>
-                    @endif
-                </ul>
-            </li>
-        @endif
         <!-- End Forms Nav -->
-        </li>
-         <!-- End Forms Nav -->
-         <!-- Forms Nav -->
+        <!-- Forms Nav -->
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#charts-hhh" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-layout-text-window-reverse"></i><span>Quản Lí Đơn Hàng </span><i
-                    class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-handbag"></i><span>Quản Lí Đơn Hàng </span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <li class="nav-item">
-                <ul id="charts-hhh" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="{{ route('orders.index') }}">
-                            <i class="bi bi-circle"></i><span>Danh Sách Đơn Hàng </span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+        <li class="nav-item">
+            <ul id="charts-hhh" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('orders.index') }}">
+                        <i class="bi bi-circle"></i><span>Danh Sách Đơn Hàng </span>
+                    </a>
+                </li>
+            </ul>
         </li>
-         <!-- End Forms Nav -->
+        </li>
+        <!-- End Forms Nav -->
 
 
     </ul>
