@@ -219,6 +219,14 @@ class UserController extends Controller
         $this->authorize('adminupdatepass', User::class);
         $user = User::find($id);
         // dd(1123);
+        if( empty($request->renewpassword) || empty($request->newpassword)){
+            $notification = [
+                'chuanhap' => '!',
+            ];
+            return back()->with($notification);
+        }
+
+
         if ($request->renewpassword == $request->newpassword) {
 
             $item = User::find($id);

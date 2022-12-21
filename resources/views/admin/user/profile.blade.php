@@ -280,5 +280,19 @@
         @php
        }
         @endphp
+        @php
+       if(Session::has('chuanhap')){
+       @endphp
+       Swal.fire({
+            icon: 'error',
+            title: 'Ốii dồi ôiii !!!',
+            text: " Nhập lại đủ trường bạn yêu nhé!",
+            showClass: {
+            popup: 'swal2-show'
+                }
+            })
+        @php
+       }
+        @endphp
         </script>
         @endsection
