@@ -216,12 +216,9 @@
                                 </div>
                             </div>
                             {{-- ====== --}}
-
-
-
-                            <div style="float:right">
+                            {{-- <div style="float:right">
                                 {{ $orders->onEachSide(5)->links() }}
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
