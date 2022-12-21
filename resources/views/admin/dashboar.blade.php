@@ -167,6 +167,48 @@
                     </div>
                 </div>
                 <!-- End Top Selling -->
+                <div class="col-12">
+                    <div class="card top-selling overflow-auto">
+                        <div class="card-body pb-0">
+                            <h5 class="card-title">Sản Phẩm mới</h5>
+
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Ảnh</th>
+                                        <th scope="col">Tên Sản Phẩm</th>
+                                        <th scope="col">Giá</th>
+                                        <th scope="col">Loại</th>
+                                        <th scope="col">Số lượng</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @if (isset($productnew))
+                                        @foreach ($productnew as $product)
+                                            <tr>
+                                                <th scope="row"><a href="{{ route('products.show', $product->id) }}"><img
+                                                            src="{{ asset($product->image) }}" alt=""></a></th>
+                                                <td><a data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="Chi Tiết Sản Phẩm"
+                                                        href="{{ route('products.show', $product->id) }}"
+                                                        class="text-primary fw-bold">{{ $product->name }}</a></td>
+                                                <td><i data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="Giá Sản Phẩm">{{ number_format($product->price) }} <span
+                                                            class="badge bg-success rounded-pill">VNĐ</span></i></td>
+                                                <td class="fw-bold"><i data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="Số Lượng"><span
+                                                            class="badge bg-success rounded-pill">{{ $product->category->name }}</span></i></td>
+                                                <td><i data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="Doanh Thu">{{ $product->quantity }}</i></td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
                 <!-- Recent Sales -->
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
@@ -199,6 +241,7 @@
 
                 </div>
                 <!-- End Recent Sales -->
+
             </div>
             <!-- End Left side columns -->
             <!-- Right side columns -->

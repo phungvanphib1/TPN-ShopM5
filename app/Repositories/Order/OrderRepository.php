@@ -28,7 +28,7 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
             $query->where('key', 'LIKE', '%' . $key . '%');
         }
         //Phân trang
-        return $query->orderBy('id', 'DESC')->paginate(5);
+        return $query->orderBy('id', 'DESC')->get();
     }
     public function topProduct(){
         $topProducts = DB::table('order_detail')
