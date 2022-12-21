@@ -40,7 +40,9 @@
                                                 @if (Auth::user()->hasPermission('Category_restore'))
                                                     <button type="submit" class="btn btn-info">Khôi Phục</button>
                                                 @else
+                                                <i data-bs-toggle="tooltip" data-bs-placement="top" title="Bạn không có quyền làm điều này!">
                                                     <button type="button" class="btn btn-info" disabled>Khôi Phục</button>
+                                                </i>
                                                 @endif
                                                 {{-- @if (count($category->products) !== 0) --}}
                                                 @if (Auth::user()->hasPermission('Category_forceDelete'))
@@ -48,7 +50,9 @@
                                                         id="{{ $category->id }}"
                                                         class="btn btn-danger sm deleteIcon">Xóa</a>
                                                 @else
+                                                <i data-bs-toggle="tooltip" data-bs-placement="top" title="Bạn không có quyền làm điều này!">
                                                     <button type="button" class="btn btn-danger" disabled>Xóa</button>
+                                                </i>
                                                 @endif
                                                 {{-- @else
                                                     <span style="color: red" ><button type="button" class="btn btn-danger" disabled>Xóa</button> có sản phẩm đi kèm</span>

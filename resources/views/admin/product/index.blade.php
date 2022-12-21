@@ -62,14 +62,18 @@
                                                     <a href="{{ route('products.edit', $product->id) }}"
                                                         class='btn btn-warning'> Sửa </a>
                                                 @else
+                                                <i data-bs-toggle="tooltip" data-bs-placement="top" title="Bạn không có quyền làm điều này!">
                                                     <button type="button" class="btn btn-warning" disabled>Sửa</button>
+                                                </i>
                                                 @endif
                                                 @if (Auth::user()->hasPermission('Product_delete'))
                                                     <button
                                                         onclick="return confirm('Bạn có chắc muốn đưa danh mục này vào thùng rác không?');"
                                                         class='btn btn-danger' type="submit">Xóa</button>
                                                 @else
+                                                <i data-bs-toggle="tooltip" data-bs-placement="top" title="Bạn không có quyền làm điều này!">
                                                     <button type="button" class="btn btn-danger" disabled>Xóa</button>
+                                                </i>
                                                 @endif
                                             </form>
                                         </td>

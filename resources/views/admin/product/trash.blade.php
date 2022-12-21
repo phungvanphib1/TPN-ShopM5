@@ -45,14 +45,18 @@
                                                 @if (Auth::user()->hasPermission('Product_restore'))
                                                     <button type="submit" class="btn btn-info">Khôi Phục</button>
                                                 @else
+                                                <i data-bs-toggle="tooltip" data-bs-placement="top" title="Bạn không có quyền làm điều này!">
                                                     <button type="button" class="btn btn-info" disabled>Khôi Phục</button>
+                                                </i>
                                                 @endif
                                                 @if (Auth::user()->hasPermission('Product_forceDelete'))
                                                     <a data-href="{{ route('product.forcedelete', $product->id) }}"
                                                         id="{{ $product->id }}"
                                                         class="btn btn-danger sm deleteIcon">Xóa</a>
                                                 @else
+                                                <i data-bs-toggle="tooltip" data-bs-placement="top" title="Bạn không có quyền làm điều này!">
                                                     <button type="button" class="btn btn-danger" disabled>Xóa</button>
+                                                </i>
                                                 @endif
                                             </form>
                                         </td>

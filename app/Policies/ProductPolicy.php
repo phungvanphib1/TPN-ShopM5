@@ -91,4 +91,9 @@ class ProductPolicy
     {
         return $user->hasPermission('Product_forceDelete');
     }
+    public function viewtrash(User $user)
+    {
+        // return $user->hasPermission('index');
+        return $user->hasPermission('Product_viewTrash');
+    }
 }
