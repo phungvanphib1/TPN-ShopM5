@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Exports\OrdersExport;
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\Order;
 use App\Services\Order\OrderServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class OrderController extends Controller
 {
@@ -23,6 +27,8 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
+        $order = Order::all();
+        $customers = Customer::get();
         $orders = $this->orderService->all($request);
         $orderWait = $this->orderService->orderWait();
         $orderBrowser = $this->orderService->orderBrowser();
@@ -32,7 +38,9 @@ class OrderController extends Controller
             'orders' => $orders,
             'orderWait' => $orderWait,
             'orderBrowser' => $orderBrowser,
-            'orderCancel' => $orderCancel
+            'orderCancel' => $orderCancel,
+            'order' => $order,
+            'customers' => $customers,
         ];
         return view('admin.order.index', $params);
     }
@@ -57,5 +65,8 @@ class OrderController extends Controller
         ];
         $order->save();
         return redirect()->route('orders.index')->with($notification);
+    }
+    public function exportExcel(){
+        return Excel::download(new OrdersExport, 'products.xlsx');
     }
 }

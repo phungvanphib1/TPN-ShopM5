@@ -85,6 +85,7 @@ Route::prefix('/')->middleware(['auth', 'prevent-back-history'])->group(function
     Route::resource('users', UserController::class);
     //  Order
     Route::prefix('orders')->group(function () {
+        Route::get('/exportExcel', [OrderController::class, 'exportExcel'])->name('orders.exportExcel');
     });
     Route::resource('orders', OrderController::class);
 });

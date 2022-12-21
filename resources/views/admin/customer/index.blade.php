@@ -9,9 +9,6 @@
                         <h2 class="offset-4">
                             Danh Sách Khách Hàng
                         </h2><br>
-                        <a class="btn btn-info" href="#"> Xuất file exel </a>
-                        <a class="btn btn-warning" href="#"> Tìm chi tiết </a>
-
                         <table class="table">
                             <thead>
                                 <tr>

@@ -16,19 +16,39 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
 
     public function all($request)
     {
-        $key = $request->key;
-        // thực hiện query
-        $query = $this->model->select('*');
+       
+        $key                    = $request->key;
+        $id                     = $request->id;
+        $name                   = $request->note;
+        $order = $this->model->select('*');
 
-        if ($key) {
-            $query->orWhere('id', $key);
-            $query->orWhere('id', 'LIKE', '%' . $key . '%');
+        if ($name) {
+            $order->where('note', 'LIKE', '%' . $name . '%');
         }
+       
         if ($key) {
-            $query->where('key', 'LIKE', '%' . $key . '%');
+            $order->orWhere('id', $key);
+            $order->orWhere('note', 'LIKE', '%' . $key . '%');
         }
-        //Phân trang
+        if ($id) {
+            $order->where('id', $id);
+        }
+
+        if (!empty($request->search)) {
+            $search = $request->search;
+            $order = $order->Search($search);
+            
+        }
+
+        if (!empty($request->customer_id)) {
+            $order->NameCate($request)
+            ->filterDate(request(['start_date', 'end_date']));
+
+        }
+
+        $order->filterDate(request(['start_date', 'end_date']));
         return $query->orderBy('id', 'DESC')->get();
+
     }
     public function topProduct(){
         $topProducts = DB::table('order_detail')
