@@ -35,7 +35,8 @@
 
                             <div class="tab-content">
                                 <div class="tab-pane fade show active profile-overview" id="orderall">
-                                    <table class="table datatable">
+                                    {{-- <table class="table datatable"> --}}
+                                        <table class="table">
                                         <thead>
                                             <tr>
                                                 <th scope="col">STT</th>
