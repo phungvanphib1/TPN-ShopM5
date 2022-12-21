@@ -16,7 +16,7 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
 
     public function all($request)
     {
-       
+
         $key                    = $request->key;
         $id                     = $request->id;
         $name                   = $request->note;
@@ -25,7 +25,7 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
         if ($name) {
             $order->where('note', 'LIKE', '%' . $name . '%');
         }
-       
+
         if ($key) {
             $order->orWhere('id', $key);
             $order->orWhere('note', 'LIKE', '%' . $key . '%');
@@ -37,7 +37,7 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
         if (!empty($request->search)) {
             $search = $request->search;
             $order = $order->Search($search);
-            
+
         }
 
         if (!empty($request->customer_id)) {
@@ -47,7 +47,7 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
         }
 
         $order->filterDate(request(['start_date', 'end_date']));
-        return $query->orderBy('id', 'DESC')->get();
+        return $order->orderBy('id', 'DESC')->get();
 
     }
     public function topProduct(){
