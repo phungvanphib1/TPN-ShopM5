@@ -15,7 +15,7 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $groups = ['Category','Customer','Group','Order','OrderDetail','Product','User'];
+        $groups = ['Category', 'Group', 'Order', 'Product', 'User'];
         $actions = ['viewAny', 'view', 'create', 'update', 'delete', 'restore', 'forceDelete'];
         foreach ($groups as $group) {
             foreach ($actions as $action) {
@@ -30,6 +30,22 @@ class RoleSeeder extends Seeder
                 'name' => 'User_adminupdatepass',
                 'group_name' => 'User'
 
+            ]
+        );
+        DB::table('roles')->insert(
+            [
+                'name' => 'Customer_viewAny',
+                'group_name' => 'Customer'
+
+            ]
+        );
+
+        $group = ['Category', 'Group', 'Product'];
+        foreach ($group as $groups) {
+            DB::table('roles')->insert([
+                'name' => $groups . '_viewTrash',
+                'group_name' => $groups,
             ]);
+        }
     }
 }

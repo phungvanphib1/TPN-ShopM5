@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
 use App\Services\Customer\CustomerServiceInterface;
 use App\Services\Order\OrderServiceInterface;
@@ -24,6 +25,7 @@ class DashboarController extends Controller
     public function index(Request $request)
     {
         // $orders = $this->orderService->all($request);
+        $productnew = Product::take(5)->get();
         $users = User::get();
         $totalCustomer  =  Customer::pluck('id')->count();
         $totalUser  =  User::pluck('id')->count();
@@ -56,6 +58,7 @@ class DashboarController extends Controller
             ->take(5)
             ->get();
         $params = [
+            'productnew' => $productnew,
             'orderWait'=> $orderWait,
             'orderBrowser' => $orderBrowser,
             'orderCancel' => $orderCancel,

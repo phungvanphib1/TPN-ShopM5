@@ -73,6 +73,7 @@
       background: transparent;
       border-radius: 30px;
       }
+
   section .noi-dung .form .input-form input[type="submit"]{
       background: #6694e9;
       color: #fff;
@@ -87,7 +88,7 @@
                 0 16px 16px rgba(0,0,0,0.12);
   }
  section .noi-dung .form .input-form input[type="submit"]:hover{
-      background: #6694e9;
+      background: #f59c9c;
   }
   section .noi-dung .form .nho-dang-nhap{
       margin-bottom: 10px;
@@ -98,7 +99,7 @@
       color: #607d8b;
   }
  section .noi-dung .form .input-form p a{
-      color: #ffb3b3;
+      color: #f59c9c;
   }
 
  section .noi-dung .form h3{
@@ -174,29 +175,27 @@
      <!--Bắt Đầu Phần Nội Dung-->
      <div class="noi-dung">
          <div class="form">
-             <h2>Trang Đăng Nhập</h2>
-             <form action="{{ route('postlogin') }}" method="POST" >
+             <h2>Lấy Lại Mật Khẩu</h2>
+             <form action="{{ route('posttakepassword') }}" method="POST" >
                 @csrf
                  <div class="input-form">
                      <span>Email</span>
                      <input type="text" name="email">
-                     @if ($errors->any())
-                     <p style="color:red">{{ $errors->first('email') }}</p>
-                 @endif
-                 </div>
+                        @if ($errors->any())
+                                <p style="color:red">{{ $errors->first('email') }}</p>
+                        @endif
+                    </div>
+                    <div id="" class="form-check-label">
+                       <p style="color: rgb(98, 96, 96)">Mật khẩu sẽ được gửi về Email liên kết <p style="color: red">Không được chia sẻ điều này với bất kì ai!</p></p>
+                     </div>
+                     <br>
                  <div class="input-form">
-                     <span>Password</span>
-                     <input type="password" name="password">
-                     @if ($errors->any())
-                     <p style="color:red">{{ $errors->first('password') }}</p>
-                 @endif
-                 </div>
-                 <div class="nho-dang-nhap">
-                     <label><input type="checkbox" name=""> Nhớ Đăng Nhập</label>
-                     <a href="{{ route('takepassword') }}">Quên Mật Khẩu</a>
-                 </div>
-                 <div class="input-form">
-                     <input type="submit" value="Đăng Nhập">
+                    <span>
+                        <input type="submit" value="Duyệt">
+                    </span>
+                    <span  >
+                        <p class="text-center">Đã Có Tài Khoản? <a href="{{ route('login') }}">Đăng Nhập</a></p>
+                    </span>
                  </div>
              </form>
          </div>
@@ -205,12 +204,12 @@
      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
      <script>
     @php
-    if(Session::has('okmail')){
+    if(Session::has('saiemail')){
     @endphp
     Swal.fire({
-         icon: 'success',
-         title: 'Lấy mật khẩu thành công!',
-         text: "Bạn chưa nhận được Email? Liên hệ SuperAdmin để xin cấp lại mật khẩu nhé!!! LH:0376301480 Email: tpnshop247@gmail.com",
+         icon: 'error',
+         title: 'ối!',
+         text: "Email của bạn không tồn tại trên hệ thống! kiếm tra lại nhé",
          showClass: {
          popup: 'swal2-show'
              }

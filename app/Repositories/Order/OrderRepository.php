@@ -45,8 +45,10 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
             ->filterDate(request(['start_date', 'end_date']));
 
         }
+
         $order->filterDate(request(['start_date', 'end_date']));
-        return $order->orderBy('id', 'DESC')->paginate(5);
+        return $query->orderBy('id', 'DESC')->get();
+
     }
     public function topProduct(){
         $topProducts = DB::table('order_detail')

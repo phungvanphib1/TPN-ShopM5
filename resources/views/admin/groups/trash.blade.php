@@ -30,13 +30,22 @@
                                                 <form action="{{ route('group.restore', $group->id) }}" method="POST">
                                                     @csrf
                                                     @method('put')
-                                                    <button type="submit" class="btn btn-info">Khôi Phục</button>
-                                                    @if (count($group->users) == 0)
+                                                    @if (Auth::user()->hasPermission('Group_restore'))
+                                                        <button type="submit" class="btn btn-info">Khôi Phục</button>
+                                                    @else
+                                                    <i data-bs-toggle="tooltip" data-bs-placement="top" title="Bạn không có quyền làm điều này!">
+                                                        <button type="button" class="btn btn-info" disabled>Khôi
+                                                            Phục</button>
+                                                    </i>
+                                                    @endif
+                                                    @if (Auth::user()->hasPermission('Group_forceDelete'))
                                                         <a data-href="{{ route('group.forcedelete', $group->id) }}"
                                                             id="{{ $group->id }}"
                                                             class="btn btn-danger sm deleteIcon">Xóa</a>
                                                     @else
+                                                    <i data-bs-toggle="tooltip" data-bs-placement="top" title="Bạn không có quyền làm điều này!">
                                                         <button type="button" class="btn btn-danger" disabled>Xóa</button>
+                                                    </i>
                                                     @endif
                                                 </form>
                                             </td>
