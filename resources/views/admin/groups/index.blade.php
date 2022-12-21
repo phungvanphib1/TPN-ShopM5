@@ -48,7 +48,9 @@
                                                     <a href="{{ route('group.edit', $group->id) }}" class='btn btn-warning'>
                                                         Sửa </a>
                                                 @else
+                                                <i data-bs-toggle="tooltip" data-bs-placement="top" title="Bạn không có quyền làm điều này!">
                                                     <button type="button" class="btn btn-warning" disabled>Sửa</button>
+                                                </i>
                                                 @endif
 
                                                 @if (Auth::user()->hasPermission('Group_delete'))
@@ -56,7 +58,9 @@
                                                         onclick="return confirm('Bạn có chắc muốn đưa danh mục này vào thùng rác không?');"
                                                         class='btn btn-danger' type="submit">Xóa</button>
                                                 @else
+                                                <i data-bs-toggle="tooltip" data-bs-placement="top" title="Bạn không có quyền làm điều này!">
                                                     <button type="button" class="btn btn-danger" disabled>Xóa</button>
+                                                </i>
                                                 @endif
 
                                             </form>
