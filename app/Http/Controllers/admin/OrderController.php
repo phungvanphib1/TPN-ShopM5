@@ -46,12 +46,14 @@ class OrderController extends Controller
     }
     public function show($id)
     {
+        
         $order = $this->orderService->find($id);
         $order_Details = $order->orderDetails;
         $params = [
             'order' => $order,
             'order_Details' => $order_Details,
         ];
+        
         return view('admin.order.show', $params);
     }
     public function update(Request $request, $id)
