@@ -11,6 +11,12 @@
                             Chi Tiết Đơn Hàng
                         </h2><br>
                         <table class="table table-bordered">
+                            <td><b>Tên Khách Hàng:</b>{{ $order->customer->name }}</td>
+                            <td><b>Địa chỉ :</b>             {{ $order->customer->address }}</td>
+                            <td><b>Email :</b>             {{ $order->customer->email }}</td>
+                            <td><b>SĐT :</b>             {{ $order->customer->phone }}</td>
+                        </table>
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th scope="col">STT</th>

@@ -71,7 +71,7 @@
                                                         @endif
                                                     </td>
                                                     <td><a class='btn btn-warning'
-                                                            href="{{ route('orders.show', $order->id) }}">Chi
+                                                            href="{{ route('orders.show', $order->customer->id) }}">Chi
                                                             tiết</a></td>
                                                 </tr>
                                             @endforeach
