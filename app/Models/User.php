@@ -13,7 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable,HasPermissions;
+    use HasApiTokens, HasFactory, Notifiable, HasPermissions;
     //
 
     /**
@@ -36,6 +36,7 @@ class User extends Authenticatable
         'ward_id',
         'group_id',
     ];
+
     public function provinces()
     {
         return $this->belongsTo(Province::class, 'province_id', 'id');
@@ -53,15 +54,35 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Group::class, 'group_id', 'id');
     }
-    // public function scopeSearch($query, $key)
-    // {
-    //     if ($key) {
-    //         $query->where('name', 'like', '%' . $key . '%')
-    //             ->orWhere('group_id', 'like', '%' . $key . '%')
-    //             ->orWhere('id', 'like', '%' . $key . '%');
-    //     }
-    //     return $query;
-    // }
+    public function scopeNameuser($query, $request)
+    {
+        if (isset($request['nameuser'])) {
+
+            return  $query->where('name', 'LIKE', '%' . $request['nameuser'] . '%');
+        }
+        return $query;
+    }
+    public function scopePhoneuser($query, $request)
+    {
+        if (isset($request['phoneuser'])) {
+            return $query->where('phone', 'LIKE', '%' . $request['phoneuser'] . '%');
+        }
+        return $query;
+    }
+    public function scopeGroupuser($query, $request)
+    {
+        if (isset($request['groupuser'])) {
+            return $query->where('group_id', 'LIKE', '%' . $request['groupuser'] . '%');
+        }
+        return $query;
+    }
+    public function scopeIduser($query, $request)
+    {
+        if (isset($request['iduser'])) {
+            return $query->where('id', 'LIKE', '%' . $request['iduser'] . '%');
+        }
+        return $query;
+    }
     public function products()
     {
         return $this->hasMany(Product::class, 'user_id_ad', 'id');

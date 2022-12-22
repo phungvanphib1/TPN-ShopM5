@@ -198,7 +198,7 @@ class UserController extends Controller
                     'message' => 'Đổi mật khẩu thành công!',
                     'alert-type' => 'success'
                 ];
-                return redirect()->route('users.index')->with($notification);
+                return back()->with($notification);
             } else {
                 Session::flash('error', config('define.update.error'));
                 $notification = [

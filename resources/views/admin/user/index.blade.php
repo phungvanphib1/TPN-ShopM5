@@ -25,6 +25,8 @@
                                 <button type="button" class="btn btn-primary" disabled>Đăng kí tài khoản</button>
                             </i>
                         @endif
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#searchModal">Tìm chi tiết</button>
+                        @include('admin.user.advanceSearch')
                         <table class="table">
                             <thead>
                                 <tr>

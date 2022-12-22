@@ -43,16 +43,15 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
             $query->orWhere('name', 'LIKE', '%' . $key . '%');
             $query->orWhere('email', 'LIKE', '%' . $key . '%');
         }
-        //Phân trang
-        $users = $query->orderBy('id', 'DESC')->paginate(5);
-        $params = [
-            'f_id'           => $id,
-            'f_name'         => $name,
-            'f_key'          => $key,
-            'f_email'        => $email,
-            'users'          => $users
-        ];
-        return $query->paginate(5);
+        if (!empty($request->search)) {
+            $search = $request->search;
+            $query = $query->Search($search);
+        }
+        $query->Phoneuser(request(['phoneuser']));
+        $query->Nameuser(request(['nameuser']));
+        $query->Groupuser(request(['groupuser']));
+        $query->Iduser(request(['iduser']));
+        return $query->orderBy('id', 'DESC')->get();
     }
     public function update($request, $id)
     {
@@ -107,7 +106,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
                 'name' => $user->name,
                 'pass' => $data->password,
             ];
-            Mail::send('mail.mailUser', compact('data'), function ($email) use($user) {
+            Mail::send('mail.mailUser', compact('data'), function ($email) use ($user) {
                 $email->subject('TPN Shop');
                 $email->to($user->email, $user->name);
             });
