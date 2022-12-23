@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\Api\Product\ApiProductRepository;
+use App\Repositories\Api\Product\ApiProductRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Category\CategoryRepositoryInterface;
@@ -26,7 +28,8 @@ use App\Services\Customer\CustomerServiceInterface;
 
 use App\Repositories\User\UserRepository;
 use App\Repositories\User\UserRepositoryInterface;
-
+use App\Services\Api\Product\ApiProductService;
+use App\Services\Api\Product\ApiProductServiceInterface;
 use App\Services\Group\GroupService;
 use App\Services\Group\GroupServiceInterface;
 use App\Services\Order\OrderService;
@@ -69,6 +72,9 @@ class AppServiceProvider extends ServiceProvider
         // đăng ký order
         $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
         $this->app->bind(OrderServiceInterface::class, OrderService::class);
+         // đăng ký Api products
+         $this->app->bind(ApiProductRepositoryInterface::class, ApiProductRepository::class);
+         $this->app->bind(ApiProductServiceInterface::class, ApiProductService::class);
     }
     /**
      * Bootstrap any application services.
