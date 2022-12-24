@@ -21,14 +21,7 @@ class ApiProductRepository extends BaseRepository implements ApiProductRepositor
     }
     public function search($request)
     {
-        $query = $this->model::query();
-        $data = $request->input('search');
-        if ($data) {
-            $query->where('status', '=', '1')->where('quantity', '>', '0')
-            ->whereRaw("name Like '%" . $data . "%' ")
-            ;
-        }
-        return $query->get();
+
     }
     public function find($id)
     {
@@ -36,9 +29,22 @@ class ApiProductRepository extends BaseRepository implements ApiProductRepositor
         ->select('products.*',  'categories.name as cateName')->where('products.id','=',$id)->get();
         return $product;
     }
+
     public function trendingProduct()
     {
-       
+        $toptrending = DB::table('products')
+        ->Join('order_detail', 'products.id', '=', 'order_detail.product_id')
+        ->selectRaw('products.*, count(order_detail.product_id) as totalBy')
+        ->groupBy('products.id')
+        ->orderBy('totalBy', 'desc')
+        ->take(4)
+        ->get();
+    return $toptrending;
+    }
+    public function getprdNew()
+    {
+        $products = $this->model->select('*');
+        return $products->orderBy('id', 'DESC')->take(6)->get();
     }
     public function find_images($id)
     {

@@ -32,4 +32,8 @@ class ApiProductService extends BaseService implements ApiProductServiceInterfac
     {
         return $this->repository->find_images($id);
     }
+    public function getprdNew()
+    {
+        return $this->repository->getprdNew();
+    }
 }

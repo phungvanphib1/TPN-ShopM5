@@ -44,4 +44,14 @@ class ApiProductController extends Controller
         $categories = Category::with('products')->take(10)->get();
         return response()->json($categories, 200);
     }
+    // sản phẩm hot
+    public function trendingProduct(){
+        $products = $this->productService->trendingProduct();
+        return response()->json($products, 200);
+    }
+    // sản phẩm mới
+    public function productNew(){
+        $products = $this->productService->getprdNew();
+        return response()->json($products, 200);
+    }
 }
