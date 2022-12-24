@@ -38,6 +38,11 @@ class ApiProductRepository extends BaseRepository implements ApiProductRepositor
         ->get();
     return $toptrending;
     }
+    public function getprdNew()
+    {
+        $products = $this->model->select('*');
+        return $products->orderBy('id', 'DESC')->take(6)->get();
+    }
     public function find_images($id)
     {
 

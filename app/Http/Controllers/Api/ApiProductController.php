@@ -46,4 +46,8 @@ class ApiProductController extends Controller
         $products = $this->productService->trendingProduct();
         return response()->json($products, 200);
     }
+    public function productNew(){
+        $products = $this->productService->getprdNew();
+        return response()->json($products, 200);
+    }
 }
