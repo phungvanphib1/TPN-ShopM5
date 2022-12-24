@@ -21,18 +21,25 @@ class ApiProductRepository extends BaseRepository implements ApiProductRepositor
     }
     public function search($request)
     {
-       
+
     }
     public function find($id)
     {
-       
+
     }
     public function trendingProduct()
     {
-       
+        $toptrending = DB::table('products')
+        ->Join('order_detail', 'products.id', '=', 'order_detail.product_id')
+        ->selectRaw('products.*, count(order_detail.product_id) as totalBy')
+        ->groupBy('products.id')
+        ->orderBy('totalBy', 'desc')
+        ->take(4)
+        ->get();
+    return $toptrending;
     }
     public function find_images($id)
     {
-       
+
     }
 }
