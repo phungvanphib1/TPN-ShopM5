@@ -25,8 +25,11 @@ class ApiProductRepository extends BaseRepository implements ApiProductRepositor
     }
     public function find($id)
     {
-
+        $product= DB::table('products')->join('categories', 'products.category_id', '=', 'categories.id')
+        ->select('products.*',  'categories.name as cateName')->where('products.id','=',$id)->get();
+        return $product;
     }
+
     public function trendingProduct()
     {
         $toptrending = DB::table('products')
@@ -45,6 +48,9 @@ class ApiProductRepository extends BaseRepository implements ApiProductRepositor
     }
     public function find_images($id)
     {
-
+        $product= DB::table('products')
+        ->join('image_products', 'products.id', '=', 'image_products.product_id')
+        ->select('image_products.image as image_products')->where('image_products.product_id','=',$id)->get();
+        return $product;
     }
 }

@@ -22,18 +22,18 @@ class ApiProductService extends BaseService implements ApiProductServiceInterfac
     }
     public function find($id)
     {
-
+        return $this->repository->find($id);
     }
     public function trendingProduct()
     {
         return $this->repository->trendingProduct();
     }
+    public function find_images($id)
+    {
+        return $this->repository->find_images($id);
+    }
     public function getprdNew()
     {
         return $this->repository->getprdNew();
-    }
-    public function find_images($id)
-    {
-
     }
 }
