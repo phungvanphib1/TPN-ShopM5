@@ -26,10 +26,10 @@ class ApiProductService extends BaseService implements ApiProductServiceInterfac
     }
     public function trendingProduct()
     {
-
+        return $this->repository->trendingProduct();
     }
     public function find_images($id)
     {
-        
+
     }
 }
