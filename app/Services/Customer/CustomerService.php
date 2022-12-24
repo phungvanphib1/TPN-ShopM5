@@ -8,9 +8,9 @@ use App\Services\BaseService;
 class CustomerService extends BaseService implements CustomerServiceInterface {
 
     public $repository;
-    public function __construct(CustomerRepositoryInterface $categoryRepository)
+    public function __construct(CustomerRepositoryInterface $customerService)
     {
-        $this->repository = $categoryRepository;
+        $this->repository = $customerService;
     }
     public function all($request)
     {

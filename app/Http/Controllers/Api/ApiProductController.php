@@ -23,17 +23,20 @@ class ApiProductController extends Controller
     //tìm kiếm
     public function search(Request $request)
     {
-            
+        $products = $this->productService->search($request);
+        return response()->json($products, 200);
     }
     //chi tiết sản phẩm
     public function product_detail($id)
     {
-       
+        $products = $this->productService->find($id);
+        return response()->json($products, 200);
     }
     //hình ảnh chi tiết
     public function image_detail($id)
     {
-       
+        $products = $this->productService->find($id);
+        return response()->json($products, 200);
     }
     //loại sản phẩm
     public function category_list()
