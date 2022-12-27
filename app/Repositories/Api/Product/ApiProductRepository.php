@@ -21,7 +21,15 @@ class ApiProductRepository extends BaseRepository implements ApiProductRepositor
     }
     public function search($request)
     {
-
+        $query = $this->model::query();
+        $data = $request->input('search');
+        if ($data) {
+            $query->whereRaw("name Like '%" . $data . "%' ")
+                ->orWhereRaw("price Like '%" .$data . "%' ")
+                ->orWhereRaw("description Like '%" .$data . "%' ")
+            ;
+        }
+        return $query->get();
     }
     public function find($id)
     {

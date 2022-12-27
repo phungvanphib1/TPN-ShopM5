@@ -18,7 +18,7 @@ class ApiProductService extends BaseService implements ApiProductServiceInterfac
     }
     public function search($request)
     {
-
+        return $this->repository->search($request);
     }
     public function find($id)
     {
