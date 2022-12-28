@@ -66,7 +66,7 @@ class UserSeeder extends Seeder
         $user->email = 'admin@gmail.com';
         $user->password = Hash::make('123456');
         $user->birthday = '2003/06/27';
-        $user->image = 'https://cdn.shopify.com/s/files/1/0354/5169/9333/products/Ao-hoodie-1-Black-12-ZiZoou-Store.jpg?v=1670341647';
+        $user->image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE_XmAIgdjzF9yR3A_s9jXmD21FfVVJYzALN3EqfXwadXVdhez3rEVk4Ljvlq1g9-dwhw&usqp=CAU';
         $user->phone = '0916663237';
         $user->address = 'Quảng Trị';
         $user->group_id = '1';
