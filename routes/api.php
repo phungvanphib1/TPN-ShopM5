@@ -29,8 +29,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::post('/logout', [ApiAuthController::class, 'logout']);
     Route::post('/change-pass', [ApiAuthController::class, 'changePassWord']);
     Route::post('/change-pass-mail', [UserController::class, 'takePassword']);
-    Route::get('/profile', [ApiAuthController::class, 'userProfile']); 
-    
+    Route::get('/profile', [ApiAuthController::class, 'userProfile']);
+
     //Cart
     Route::get('list-cart', [CartController::class, 'getAllCart']);
     Route::get('add-to-cart/{id}', [CartController::class, 'addToCart']);
@@ -44,7 +44,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('product_list',[ApiProductController::class,'product_list']);
     Route::get('product_list/search',[ApiProductController::class,'search']);
     Route::get('product_detail/{id}',[ApiProductController::class,'product_detail']);
-    Route::get('product_images',[ApiProductController::class,'image_detail']);
+    Route::get('product_images/{id}',[ApiProductController::class,'image_detail']);
     Route::get('category_list',[ApiProductController::class,'category_list']);
     Route::get('trendingProduct',[ApiProductController::class,'trendingProduct']);
     Route::get('productnew',[ApiProductController::class,'productnew']);
