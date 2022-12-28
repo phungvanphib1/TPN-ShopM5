@@ -21,26 +21,31 @@ class ApiProductRepository extends BaseRepository implements ApiProductRepositor
     }
     public function search($request)
     {
-
     }
     public function find($id)
     {
-        $product= DB::table('products')->join('categories', 'products.category_id', '=', 'categories.id')
-        ->select('products.*',  'categories.name as cateName')->where('products.id','=',$id)->get();
+        $product =  $this->model->with([
+            'category' => function ($query) {
+                $query->select('id', 'name');
+            },
+            'image_products' => function ($query) {
+                $query->select('id', 'product_id', 'image');
+            }
+        ])->find($id);
         return $product;
     }
-
     public function trendingProduct()
     {
         $toptrending = DB::table('products')
-        ->Join('order_detail', 'products.id', '=', 'order_detail.product_id')
-        ->selectRaw('products.*, count(order_detail.product_id) as totalBy')
-        ->groupBy('products.id')
-        ->orderBy('totalBy', 'desc')
-        ->take(4)
-        ->get();
-    return $toptrending;
+            ->Join('order_detail', 'products.id', '=', 'order_detail.product_id')
+            ->selectRaw('products.*, count(order_detail.product_id) as totalBy')
+            ->groupBy('products.id')
+            ->orderBy('totalBy', 'desc')
+            ->take(4)
+            ->get();
+        return $toptrending;
     }
+
     public function getprdNew()
     {
         $products = $this->model->select('*');
@@ -48,9 +53,9 @@ class ApiProductRepository extends BaseRepository implements ApiProductRepositor
     }
     public function find_images($id)
     {
-        $product= DB::table('products')
-        ->join('image_products', 'products.id', '=', 'image_products.product_id')
-        ->select('image_products.image as image_products')->where('image_products.product_id','=',$id)->get();
+        $product = DB::table('products')
+            ->join('image_products', 'products.id', '=', 'image_products.product_id')
+            ->select('image_products.image as image_products')->where('image_products.product_id', '=', $id)->get();
         return $product;
     }
 }
