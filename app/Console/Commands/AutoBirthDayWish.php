@@ -43,13 +43,11 @@ class AutoBirthDayWish extends Command
         $users = User::whereMonth('birthday', date('m'))
             ->whereDay('birthday', date('d'))
             ->get();
-
         if ($users->count() > 0) {
             foreach ($users as $user) {
                 Mail::to($user)->send(new BirthDayWish($user));
             }
         }
-
         return 0;
     }
 }
