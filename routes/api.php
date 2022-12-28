@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Api\ApiAuthController;
+use App\Http\Controllers\Api\ApiOrderController;
 use App\Http\Controllers\Api\ApiProductController;
 use App\Http\Controllers\Api\CartController;
 use Illuminate\Http\Request;
@@ -19,6 +22,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+    //auth
+    Route::post('/login-customer', [ApiAuthController::class, 'login']);
+    Route::post('/register', [ApiAuthController::class, 'register']);
+    Route::post('/logout', [ApiAuthController::class, 'logout']);
+    Route::post('/change-pass', [ApiAuthController::class, 'changePassWord']);
+    Route::post('/change-pass-mail', [UserController::class, 'takePassword']);
+    Route::get('/profile', [ApiAuthController::class, 'userProfile']); 
+    
     //Cart
     Route::get('list-cart', [CartController::class, 'getAllCart']);
     Route::get('add-to-cart/{id}', [CartController::class, 'addToCart']);
@@ -37,3 +49,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('trendingProduct',[ApiProductController::class,'trendingProduct']);
     Route::get('productnew',[ApiProductController::class,'productnew']);
     Route::get('product_list/search',[ApiProductController::class,'search']);
+
