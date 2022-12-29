@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class ApiAuthController extends Controller
 {
@@ -21,9 +23,10 @@ class ApiAuthController extends Controller
     // dang nhap
     public function login(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required',
+        // return response()->json($request->all());
+        $validator = Validator::make( $request->all(),[
+            'email' => 'required',
+            'password' =>'required'
         ]);
 
         if ($validator->fails()) {
@@ -33,25 +36,32 @@ class ApiAuthController extends Controller
         if (!$token = auth('api')->attempt($validator->validated())) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-
-        return $this->createNewToken($token);
+        // return $this->createNewToken($token);
+        return  response()->json([
+            'status' => true,
+            'message' => 'User successfully Login',
+            'customer' => $request->email,
+            'access_token' => $token
+        ]);
     }
-    // dang ki
+
+    // register
     public function register(Request $request)
     {
+        // return response()->json($request->all());
         $validator = Validator::make($request->all(), [
 
             'email' => 'required|string|email|max:100|unique:customers',
             'name' => 'required|string',
             'phone' => 'required',
-            'password' => 'required|string|min:6',
-
+            'address' => 'required',
+            'password' => 'required|string|min:3',
         ]);
 
         if ($validator->fails()) {
             return response()->json([
-                // 'errors' => $validator->errors()->toJson(),
-                'message' => 'User failled registered',
+                'errors' => $validator->errors()->toJson(),
+                'message' => 'Đăng Ký Không Thành Công',
                 'status' => false,
             ], 400);
         }
@@ -63,7 +73,7 @@ class ApiAuthController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'User successfully registered',
+            'message' => 'Đăng Ký Thành Công',
             'customer' => $customer
         ], 201);
     }
