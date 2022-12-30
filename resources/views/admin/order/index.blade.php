@@ -36,7 +36,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade show active profile-overview" id="orderall">
                                     {{-- <table class="table datatable"> --}}
-                                        <table class="table">
+                                        <table class="table datatable">
                                         <thead>
                                             <tr>
                                                 <th scope="col">STT</th>
@@ -55,7 +55,7 @@
                                                     <td>{{ $order->customer->name }}</td>
                                                     <td>{{ $order->customer->phone }}</td>
                                                     <td>{{ $order->note }}</td>
-                                                    <td>{{ $order->date_at }}</td>
+                                                    <td>{{ $order->created_at }}</td>
                                                     <td>
                                                         @if ($order->status === 0)
                                                             <h4 style="color: silver"><i
@@ -71,7 +71,7 @@
                                                         @endif
                                                     </td>
                                                     <td><a class='btn btn-warning'
-                                                            href="{{ route('orders.show', $order->customer->id) }}">Chi
+                                                            href="{{ route('orders.show', $order->id) }}">Chi
                                                             tiết</a></td>
                                                 </tr>
                                             @endforeach
@@ -101,7 +101,7 @@
                                                     <td>{{ $wait->customer->name }}</td>
                                                     <td>{{ $wait->customer->phone }}</td>
                                                     <td>{{ $wait->note }}</td>
-                                                    <td>{{ $wait->date_at }}</td>
+                                                    <td>{{ $wait->created_at }}</td>
                                                     <td>
                                                         @if ($wait->status === 0)
                                                             <h4 style="color: silver"><i
@@ -147,7 +147,7 @@
                                                     <td>{{ $browser->customer->name }}</td>
                                                     <td>{{ $browser->customer->phone }}</td>
                                                     <td>{{ $browser->note }}</td>
-                                                    <td>{{ $browser->date_at }}</td>
+                                                    <td>{{ $browser->created_at }}</td>
                                                     <td>
                                                         @if ($browser->status === 0)
                                                             <h4 style="color: silver"><i
@@ -193,7 +193,7 @@
                                                     <td>{{ $cancel->customer->name }}</td>
                                                     <td>{{ $cancel->customer->phone }}</td>
                                                     <td>{{ $cancel->note }}</td>
-                                                    <td>{{ $cancel->date_at }}</td>
+                                                    <td>{{ $cancel->created_at }}</td>
                                                     <td>
                                                         @if ($cancel->status === 0)
                                                             <h4 style="color: silver"><i
