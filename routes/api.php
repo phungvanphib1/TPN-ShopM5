@@ -23,23 +23,24 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
     //auth
     Route::post('/login-customer', [ApiAuthController::class, 'login']);
     Route::post('/register', [ApiAuthController::class, 'register']);
     Route::post('/logout', [ApiAuthController::class, 'logout']);
     Route::post('/change-pass', [ApiAuthController::class, 'changePassWord']);
     Route::post('/change-pass-mail', [UserController::class, 'takePassword']);
-    Route::get('/profile', [ApiAuthController::class, 'userProfile']);
-
+    Route::get('auth/profile', [ApiAuthController::class, 'userProfile']);
     //Cart
     Route::get('list-cart', [CartController::class, 'getAllCart']);
     Route::get('add-to-cart/{id}', [CartController::class, 'addToCart']);
     Route::get('remove-to-cart/{id}', [CartController::class, 'removeToCart']);
     Route::get('remove-all-cart', [CartController::class, 'removeAllCart']);
     Route::get('update-cart/{id}/{quantity}', [CartController::class, 'updateCart']);
+
+    Route::get('list-cart-by-like', [CartController::class, 'getAllCartByLike']);
     Route::get('add-to-cart-by-like/{id}', [CartController::class, 'addToCartBylike']);
     Route::get('remove-to-cart-by-like/{id}', [CartController::class, 'removeToCartBylike']);
-    Route::get('list-cart-by-like', [CartController::class, 'getAllCartByLike']);
     //Product
     Route::get('product_list',[ApiProductController::class,'product_list']);
     Route::get('product_list/search',[ApiProductController::class,'search']);
@@ -49,4 +50,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('trendingProduct',[ApiProductController::class,'trendingProduct']);
     Route::get('productnew',[ApiProductController::class,'productnew']);
     Route::get('product_list/search',[ApiProductController::class,'search']);
+
+    //order
+    Route::get('order_create', [ApiOrderController::class, 'create']);
+    Route::post('order_store', [ApiOrderController::class, 'store']);
+
 

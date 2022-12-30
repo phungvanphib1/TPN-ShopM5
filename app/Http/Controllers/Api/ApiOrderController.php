@@ -29,75 +29,66 @@ class ApiOrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        try {
-            $customer = Customer::all();
-
-            $params = [
-                'customer' => $customer
-
-            ];
-            return response()->json($params);
-        } catch (\Exception $e) {
+    public function create() {
+        try{
+            return response()->json(200);
+        }catch(\Exception $e){
             Log::error('message: ' . $e->getMessage() . 'line: ' . $e->getLine() . 'file: ' . $e->getFile());
         }
-    }
+        }
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        try {
-            $order = new Order();
-            $order->note = $request->note;
-            $order->address = $request->address;
-            $order->name_customer = $request->name_customer;
-            $order->customer_id = $request->customer_id;
-            $order->phone = $request->phone;
-            $order->total = 0;
-            $order->save();
-            $carts = Cache::get('carts');
-            $order_total_price = 0;
-            foreach ($carts as $productId => $cart) {
-                $order_total_price += $cart['price'] * $cart['quantity'];
-                Order_detail::create([
-                    'price_at_time' => $cart['price'],
-                    'quantity' => $cart['quantity'],
-                    'product_id' => $productId,
-                    'total' => $cart['price'] * $cart['quantity'],
-                    'order_id' => $order->id,
-                ]);
-                Product::where('id', $productId)->decrement('quantity', $cart['quantity']);
-            }
-            $id_order = $order->id;
-            $order->total = $order_total_price;
-            $order->save();
-            Cache::forget('carts');
-            $carts = Cache::get('carts');
-            $order = $this->orderService->find($id_order);
-            $customer = Customer::findOrFail($request->customer_id);
-            $orderDetails = $order->orderDetails;
-            $orderStatus = 'Bạn Đã Đặt Mua Những Sản Phẩm Sau:';
-            $params = [
-                'orderStatus' => $orderStatus,
-                'order' => $order,
-                'orderDetails' => $orderDetails,
-            ];
+    public function store(Request $request) {
+        try{
+        $order = new Order;
+        $order->note = $request->note;
+        $order->customer_id = $request->customer_id;
+        $order->total = 0;
+        $order->status = 0;
+        $order->date_at = null;
+        $order->date_ship = null;
+        $order->save();
+        $carts = Cache::get('carts');
+        $order_total_price = 0;
+        foreach ($carts as $productId => $cart) {
+            $order_total_price += $cart['price'] * $cart['quantity'];
+            Order_detail::create([
+                'price' => $cart['price'],
+                'quantity' => $cart['quantity'],
+                'product_id' => $productId,
+                'order_id' => $order->id,
+            ]);
+            Product::where('id', $productId)->decrement('quantity', $cart['quantity']);
+        }
+        $id_order = $order->id;
+        $order->total= $order_total_price;
+        $order->save();
+        Cache::forget('carts');
+        $carts = Cache::get('carts');
+        $customer = Customer::findOrFail($request->customer_id);
+        $order = $this->orderService->find($id_order);
+        $orderDetails = $order->orderDetails;
+        $params = [
+            'order' => $order,
+            'orderDetails' => $orderDetails,
+            'total' => $order->total,
+        ];
 
-            Mail::send('admin.emails.orders', compact('params'), function ($email) use ($customer) {
-                $email->subject('TCC-Shop');
-                $email->to($customer->email, $customer->name);
-            });
+        Mail::send('mail.mailOders', compact('params'), function ($email) use($customer) {
+            $email->subject('TPN-Shop');
+            $email->to($customer->email,$customer->name);
+        });
 
-            return response()->json(Order::with(['orderDetails'])->find($order->id));
-        } catch (\Exception $e) {
+        return response()->json(Order::with(['orderDetails'])->find($order->id));
+        }catch(\Exception $e){
             Log::error('message: ' . $e->getMessage() . 'line: ' . $e->getLine() . 'file: ' . $e->getFile());
         }
     }
+
 
     /**
      * Display the specified resource.
