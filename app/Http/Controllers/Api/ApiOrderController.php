@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Mail;
  */
 class ApiOrderController extends Controller
 {
-
     function __construct(private OrderServiceInterface $orderService)
     {
         $this->orderService = $orderService;
