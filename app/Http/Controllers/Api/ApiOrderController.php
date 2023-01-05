@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
+/**
+ * @property    ControllerDocumentManager   $documentManager
+ */
 class ApiOrderController extends Controller
 {
-    function __construct(OrderServiceInterface $orderService)
+
+    function __construct(private OrderServiceInterface $orderService)
     {
         $this->orderService = $orderService;
     }
