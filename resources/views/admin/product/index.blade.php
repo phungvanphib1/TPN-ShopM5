@@ -12,7 +12,7 @@
                         <br>
                         @if (Auth::user()->hasPermission('Product_create'))
                             <a class="btn btn-primary" href="{{ route('products.create') }}"> Thêm Sản Phẩm </a>
-                            <a onclick="return confirm('Bạn có muốn tiếp tục điều này hay không?')" class="btn btn-info" href="{{ route('products.exportExcel') }}"> Xuất file exel </a>
+                            <a onclick="return confirm('Bạn có muốn tiếp tục điều này hay không?')" class="btn btn-info" href="{{ route('products.exportExcel') }}"> Xuất file excel  </a>
                         @else
                             <button type="button" class="btn btn-primary" disabled>Thêm Sản Phẩm</button>
                         @endif

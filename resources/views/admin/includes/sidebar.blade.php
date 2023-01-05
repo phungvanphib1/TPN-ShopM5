@@ -27,11 +27,13 @@
                             </a>
                         </li>
                     @endif
+                    @if (Auth::user()->hasPermission('Category_viewTrash'))
                     <li>
                         <a href="{{ route('category.trash') }}">
                             <i class="bi bi-circle"></i><span>Thùng Rác</span>
                         </a>
                     </li>
+                    @endif
                 </ul>
             </li>
         @endif
@@ -55,11 +57,13 @@
                             </a>
                         </li>
                     @endif
+                    @if (Auth::user()->hasPermission('Product_viewTrash'))
                     <li>
                         <a href="{{ route('product.trash') }}">
                             <i class="bi bi-circle"></i><span>Thùng Rác</span>
                         </a>
                     </li>
+                    @endif
                 </ul>
             </li>
         @endif
@@ -109,11 +113,13 @@
                             </a>
                         </li>
                     @endif
+                    @if (Auth::user()->hasPermission('Group_viewTrash'))
                     <li>
                         <a href="{{ route('group.trash') }}">
                             <i class="bi bi-circle"></i><span>Thùng Rác</span>
                         </a>
                     </li>
+                    @endif
                 </ul>
             </li>
         @endif

@@ -4,8 +4,8 @@
         <h1>Trang Tổng Quan</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Tổng Quan</a></li>
-                <li class="breadcrumb-item active">Home</li>
+                <li class="breadcrumb-item"><a href="#">Tổng quan</a></li>
+                <li class="breadcrumb-item active"><a href="#">Trang chủ</a></li>
 
             </ol>
         </nav>
@@ -110,7 +110,7 @@
 
                                         <h6>{{ $totalUser }}</h6>
                                         <span class="text-success small pt-1 fw-bold">{{ $totalAdmin }}</span> <span
-                                            class="text-muted small pt-2 ps-1">SuperAdim</span>
+                                            class="text-muted small pt-2 ps-1">SuperAdmin</span>
                                     </div>
                                 </div>
                             </div>

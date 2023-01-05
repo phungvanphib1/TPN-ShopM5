@@ -10,7 +10,7 @@
                             Danh Sách Đơn Hàng
                         </h2>
                         <br>
-                        <a onclick="return confirm('Bạn có muốn tiếp tục điều này hay không?')" class="btn btn-info" href="{{ route('orders.exportExcel') }}"> Xuất file exel </a>
+                        <a onclick="return confirm('Bạn có muốn tiếp tục điều này hay không?')" class="btn btn-info" href="{{ route('orders.exportExcel') }}"> Xuất file excel  </a>
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#searchModal">Tìm chi tiết</button>
                         @include('admin.order.advanceSearch')
                         <div class="col-sm-12">
