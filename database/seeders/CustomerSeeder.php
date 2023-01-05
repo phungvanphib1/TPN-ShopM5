@@ -32,6 +32,38 @@ class CustomerSeeder extends Seeder
                 'phone' => '9876543210',
                 'password' => bcrypt('123')
             ],
+            [
+                'id' =>3,
+                'name' => 'nguyen van C',
+                'address' => 'Gio Linh',
+                'email' => 'nguyenvanC@gmail.com',
+                'phone' => '9876543210',
+                'password' => bcrypt('123')
+            ],
+            [
+                'id' =>4,
+                'name' => 'nguyen van D',
+                'address' => 'Vĩnh Linh',
+                'email' => 'nguyenvanD@gmail.com',
+                'phone' => '9876543210',
+                'password' => bcrypt('123')
+            ],
+            [
+                'id' =>5,
+                'name' => 'nguyen van E',
+                'address' => 'Cam Lộ',
+                'email' => 'nguyenvanE@gmail.com',
+                'phone' => '9876543210',
+                'password' => bcrypt('123')
+            ],
+            [
+                'id' =>6,
+                'name' => 'nguyen van G',
+                'address' => 'Đông Hà',
+                'email' => 'nguyenvanG@gmail.com',
+                'phone' => '9876543210',
+                'password' => bcrypt('123')
+            ],
         ]);
     }
 }
