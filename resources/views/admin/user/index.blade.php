@@ -31,7 +31,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">STT</th>
-                                    <th scope="col">Hình dại diện</th>
+                                    <th scope="col">Hình đại diện</th>
                                     <th scope="col">Tên</th>
                                     <th scope="col">Chức vụ</th>
                                     <th scope="col">Liên hệ</th>

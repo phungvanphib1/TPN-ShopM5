@@ -185,7 +185,7 @@
                  @endif
                  </div>
                  <div class="input-form">
-                     <span>Password</span>
+                     <span>Mật khẩu</span>
                      <input type="password" name="password">
                      @if ($errors->any())
                      <p style="color:red">{{ $errors->first('password') }}</p>
